@@ -1,55 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StepFault.ai</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1c1c2d);
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
-    .container {
-      max-width: 700px;
-      padding: 2rem;
-      border: 1px solid #444;
-      border-radius: 12px;
-      background-color: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #00ffe1;
-    }
-    p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    footer {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StepFault – Creative AI & Quantum Computing</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>StepFault.ai</h1>
-    <p>Where Quantum Intelligence meets the edge of AI innovation.</p>
-    <p>We're building something extraordinary. Stay tuned.</p>
-    <footer>
-      &copy; 2025 StepFault.ai. All rights reserved.
-    </footer>
+  <nav class="navbar">
+    <div style="display: flex; align-items: center; gap: 0.7rem;">
+      <img src="assets/stepfault-logo.svg" alt="StepFault Logo" class="logo" style="height: 38px; width: 38px;">
+      <span style="color: #09B6A2; font-size: 1.35rem; font-weight: 600; letter-spacing: 1px; font-family: 'Inter', Arial, sans-serif;">StepFault</span>
+    </div>
+    <div class="menu-toggle" id="menuToggle" aria-label="Open navigation" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <header class="hero" style="position: relative; overflow: hidden;">
+  <img src="assets/banner.jpg" alt="Banner" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: brightness(0.5) blur(1px);">
+  <div style="position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; min-height: 350px;">
+    <div style="background: rgba(16, 16, 16, 0.75); padding: 2.5rem 2rem; border-radius: 18px; box-shadow: 0 4px 32px rgba(0,0,0,0.2); max-width: 600px; width: 100%; text-align: center;">
+    <h1>StepFault</h1>
+    <p>Unleashing Creativity with AI & Quantum Computing</p>
+    <a class="cta" href="#">Explore the Future</a>
+    </div>
   </div>
+</header>
+
+<section id="about" style="max-width: 800px; margin: 3rem auto 0 auto; padding: 2rem; background: rgba(24,24,24,0.7); border-radius: 16px;"> 
+  <h2 style="color:#09B6A2; margin-bottom:1rem;">About StepFault</h2>
+  <p style="color: #b0b0b0; font-size: 1.1rem;">
+    At StepFault, we blend the limitless potential of artificial intelligence with the mind-bending possibilities of quantum computing. From generative design to quantum-accelerated insights, we empower innovators to solve tomorrow’s challenges today. Discover a new frontier where creativity meets computation.
+  </p>
+</section>
+
+<section id="services" style="max-width: 900px; margin: 3rem auto 0 auto; padding: 2rem; background: rgba(24,24,24,0.7); border-radius: 16px;"> 
+  <h2 style="color:#09B6A2; margin-bottom:1.5rem;">Our Services</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+    <div style="flex: 1 1 250px; min-width: 220px; background: #232323; border-radius: 12px; padding: 1.5rem; color: #fff; display: flex; align-items: flex-start; gap: 1rem;">
+      <img src="assets/icon-quantum.svg" alt="Quantum Algorithm Icon" style="width:40px;height:40px;flex-shrink:0;">
+      <div>
+        <h3 style="color: #09B6A2; margin-top:0;">Quantum Algorithm Design</h3>
+        <p style="color: #b0b0b0;">Custom quantum algorithms for optimization, cryptography, and simulation, tailored to your industry’s toughest problems.</p>
+      </div>
+    </div>
+    <div style="flex: 1 1 250px; min-width: 220px; background: #232323; border-radius: 12px; padding: 1.5rem; color: #fff; display: flex; align-items: flex-start; gap: 1rem;">
+      <img src="assets/icon-ai.svg" alt="AI Automation Icon" style="width:40px;height:40px;flex-shrink:0;">
+      <div>
+        <h3 style="color: #09B6A2; margin-top:0;">AI-Powered Automation</h3>
+        <p style="color: #b0b0b0;">Streamline operations and decision-making with advanced AI solutions, from natural language processing to predictive analytics.</p>
+      </div>
+    </div>
+    <div style="flex: 1 1 250px; min-width: 220px; background: #232323; border-radius: 12px; padding: 1.5rem; color: #fff; display: flex; align-items: flex-start; gap: 1rem;">
+      <img src="assets/icon-integration.svg" alt="Quantum-AI Integration Icon" style="width:40px;height:40px;flex-shrink:0;">
+      <div>
+        <h3 style="color: #09B6A2; margin-top:0;">Quantum-AI Integration</h3>
+        <p style="color: #b0b0b0;">Combine the strengths of quantum computing and AI for next-generation insights, accelerating research and innovation.</p>
+      </div>
+    </div>
+    <div style="flex: 1 1 250px; min-width: 220px; background: #232323; border-radius: 12px; padding: 1.5rem; color: #fff; display: flex; align-items: flex-start; gap: 1rem;">
+      <img src="assets/icon-creative.svg" alt="Creative Generative Models Icon" style="width:40px;height:40px;flex-shrink:0;">
+      <div>
+        <h3 style="color: #09B6A2; margin-top:0;">Creative Generative Models</h3>
+        <p style="color: #b0b0b0;">Harness generative AI for art, design, and content creation, pushing the boundaries of creativity and technology.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" style="max-width: 700px; margin: 3rem auto 0 auto; padding: 2rem; background: rgba(24,24,24,0.7); border-radius: 16px;"> 
+  <h2 style="color:#09B6A2; margin-bottom:1rem;">Contact Us</h2>
+  <form style="display: flex; flex-direction: column; gap: 1.25rem;" autocomplete="off">
+    <div style="display: flex; flex-direction: column;">
+      <label for="name" style="margin-bottom: 0.5rem; color: #b0b0b0;">Name</label>
+      <input type="text" id="name" name="name" required style="padding: 0.75rem; border-radius: 8px; border: none; background: #232323; color: #fff;">
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      <label for="email" style="margin-bottom: 0.5rem; color: #b0b0b0;">Email</label>
+      <input type="email" id="email" name="email" required style="padding: 0.75rem; border-radius: 8px; border: none; background: #232323; color: #fff;">
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      <label for="message" style="margin-bottom: 0.5rem; color: #b0b0b0;">Message</label>
+      <textarea id="message" name="message" rows="5" required style="padding: 0.75rem; border-radius: 8px; border: none; background: #232323; color: #fff;"></textarea>
+    </div>
+    <button type="submit" style="background: #09B6A2; color: #fff; padding: 0.75rem 2rem; border-radius: 999px; border: none; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background 0.2s;">Send Message</button>
+  </form>
+</section>
 </body>
+  <footer style="background: #181818; color: #b0b0b0; text-align: center; padding: 2rem 1rem; margin-top: 3rem; font-size: 0.95rem;">
+    <div style="max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+      <div style="flex: 1 1 200px; text-align: left; min-width: 180px;">
+        <strong style="color:#09B6A2;">StepFault</strong><br>
+        Creative AI & Quantum Computing Solutions<br>
+        Tulsa, OK
+      </div>
+      <div style="flex: 1 1 200px; min-width: 180px;">
+        <a href="#about" style="color:#b0b0b0; text-decoration:none; margin-right:1.25rem;">About</a>
+        <a href="#services" style="color:#b0b0b0; text-decoration:none; margin-right:1.25rem;">Services</a>
+        <a href="#contact" style="color:#b0b0b0; text-decoration:none;">Contact</a>
+      </div>
+      <div style="flex: 1 1 200px; text-align: right; min-width: 180px;">
+        &copy; 2025 StepFault. All rights reserved.<br>
+        <span style="font-size:0.85em;">Privacy Policy | Terms of Service</span>
+      </div>
+    </div>
+  </footer>
+<script>
+  // Hamburger menu toggle for mobile
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+  menuToggle.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      navLinks.classList.toggle('active');
+    }
+  });
+</script>
 </html>
