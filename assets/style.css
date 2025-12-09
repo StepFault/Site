@@ -159,3 +159,24 @@ body {
   border-color: #09B6A2;
 }
 
+/* Form message styles */
+.form-message {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.form-message-success {
+  background-color: rgba(9, 182, 162, 0.2);
+  color: #09B6A2;
+  border: 1px solid rgba(9, 182, 162, 0.3);
+}
+
+.form-message-error {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
