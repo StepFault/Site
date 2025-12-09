@@ -4,6 +4,7 @@ import logging
 from typing import Dict
 
 from src.api.schemas.contact import ContactRequest
+from src.services.core.contact_processor import process_contact_submission_async
 
 logger = logging.getLogger(__name__)
 
@@ -17,31 +18,17 @@ class ContactService:
         """
         Process a contact form submission.
         
+        Saves to database and sends email notifications.
+        
         Args:
             contact_request: Validated contact form data
             
         Returns:
             Dictionary with success status and message
         """
-        logger.info(
-            f"Processing contact submission from {contact_request.name} "
-            f"({contact_request.email})"
+        return await process_contact_submission_async(
+            name=contact_request.name,
+            email=contact_request.email,
+            message=contact_request.message,
         )
-        
-        # Log the submission details
-        logger.info(
-            f"Contact form submitted by {contact_request.name} "
-            f"({contact_request.email}) - Message length: {len(contact_request.message)} chars"
-        )
-        
-        # TODO: In the future, this could:
-        # - Save to database
-        # - Send email notification
-        # - Integrate with CRM
-        # - Send to Slack/Discord webhook
-        
-        return {
-            "success": True,
-            "message": "Thank you for your message. We'll get back to you soon!",
-        }
 

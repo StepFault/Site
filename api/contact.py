@@ -9,7 +9,14 @@ FastAPI backend but adapts to Vercel's serverless function format.
 from http.server import BaseHTTPRequestHandler
 import json
 import logging
+import os
+import sys
 from email.utils import parseaddr
+
+# Add src to path for imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from src.services.core.contact_processor import process_contact_submission_sync
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -95,20 +102,36 @@ class handler(BaseHTTPRequestHandler):
                 }).encode('utf-8'))
                 return
             
-            # Log submission
+            # Process submission (save to database and send emails)
             logger.info(
                 f"Contact form submission: {name} ({email}) - {len(message)} chars"
             )
             
-            # Send success response
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.send_header('Access-Control-Allow-Origin', '*')
-            self.end_headers()
-            self.wfile.write(json.dumps({
-                'success': True,
-                'message': "Thank you for your message. We'll get back to you soon!"
-            }).encode('utf-8'))
+            try:
+                # Process submission (database + emails)
+                result = process_contact_submission_sync(name, email, message)
+                
+                # Send success response
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps(result).encode('utf-8'))
+                
+            except Exception as process_error:
+                # Log error but still return success to user
+                logger.error(
+                    f"Error processing submission: {process_error}",
+                    exc_info=True
+                )
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    'success': True,
+                    'message': "Thank you for your message. We'll get back to you soon!"
+                }).encode('utf-8'))
             
         except json.JSONDecodeError as e:
             logger.warning(f"JSON decode error: {e}")
