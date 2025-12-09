@@ -8,6 +8,7 @@ import logging
 import os
 
 from src.config import settings
+from src.api.routes import contact
 
 # Configure logging
 logging.basicConfig(
@@ -36,6 +37,24 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include routers
+app.include_router(contact.router)
+
+# Add alias route for /api/contact (Vercel compatibility)
+# This allows the frontend to work with both local FastAPI and Vercel serverless
+from src.api.routes.contact import submit_contact
+from src.api.schemas.contact import ContactRequest, ContactResponse
+
+@app.post(
+    "/api/contact",
+    response_model=ContactResponse,
+    status_code=200,
+    include_in_schema=False,  # Don't show in docs since it's an alias
+)
+async def submit_contact_alias(contact_request: ContactRequest) -> ContactResponse:
+    """Alias endpoint for /api/contact (Vercel compatibility)."""
+    return await submit_contact(contact_request)
 
 # Mount static files (assets folder)
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
