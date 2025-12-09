@@ -1,8 +1,1 @@
-{
-  "functions": {
-    "api/contact.py": {
-      "runtime": "python3.12"
-    }
-  }
-}
-
+{}
