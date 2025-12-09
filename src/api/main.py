@@ -53,7 +53,17 @@ from src.api.schemas.contact import ContactRequest, ContactResponse
     include_in_schema=False,  # Don't show in docs since it's an alias
 )
 async def submit_contact_alias(contact_request: ContactRequest) -> ContactResponse:
-    """Alias endpoint for /api/contact (Vercel compatibility)."""
+    """Alias endpoint for /api/contact (local development)."""
+    return await submit_contact(contact_request)
+
+@app.post(
+    "/api/contact.py",
+    response_model=ContactResponse,
+    status_code=200,
+    include_in_schema=False,  # Don't show in docs since it's an alias
+)
+async def submit_contact_vercel_alias(contact_request: ContactRequest) -> ContactResponse:
+    """Alias endpoint for /api/contact.py (Vercel compatibility for local testing)."""
     return await submit_contact(contact_request)
 
 # Mount static files (assets folder)
