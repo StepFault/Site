@@ -38,9 +38,15 @@ class Settings(BaseSettings):
     @classmethod
     def parse_allowed_origins(cls, v):
         """Parse allowed_origins from comma-separated string or list."""
+        if v is None:
+            return ["http://localhost:8000"]
         if isinstance(v, str):
+            if not v.strip():
+                return ["http://localhost:8000"]
             return [origin.strip() for origin in v.split(",") if origin.strip()]
-        return v
+        if isinstance(v, list):
+            return v
+        return ["http://localhost:8000"]
 
 
 settings = Settings()
