@@ -85,9 +85,13 @@ async function handleContactSubmit(event) {
         console.log('Response data:', data);
         
         if (response.ok && data.success) {
+            console.log('✅ Form submission successful, showing success message');
             showFormMessage(data.message || 'Thank you for your message! We\'ll get back to you soon.', 'success');
             form.reset();
+            // Scroll to form to show message
+            form.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
+            console.log('❌ Form submission failed:', data);
             showFormMessage(data.message || data.detail || 'Something went wrong. Please try again later.', 'error');
         }
     } catch (error) {
@@ -104,6 +108,8 @@ async function handleContactSubmit(event) {
  * Show form message to user
  */
 function showFormMessage(message, type) {
+    console.log(`Showing ${type} message:`, message);
+    
     // Remove existing message if any
     const existingMessage = document.getElementById('formMessage');
     if (existingMessage) {
@@ -115,17 +121,26 @@ function showFormMessage(message, type) {
     messageDiv.id = 'formMessage';
     messageDiv.className = `form-message form-message-${type}`;
     messageDiv.textContent = message;
+    messageDiv.style.display = 'block'; // Ensure it's visible
     
     // Insert before submit button
     const form = document.getElementById('contactForm');
     const submitButton = form.querySelector('button[type="submit"]');
-    form.insertBefore(messageDiv, submitButton);
+    if (submitButton && submitButton.parentNode) {
+        form.insertBefore(messageDiv, submitButton);
+        console.log('✅ Message inserted before submit button');
+    } else {
+        console.error('❌ Could not find submit button to insert message');
+        // Fallback: append to form
+        form.appendChild(messageDiv);
+    }
     
     // Auto-remove after 5 seconds for success messages
     if (type === 'success') {
         setTimeout(() => {
             if (messageDiv.parentNode) {
                 messageDiv.remove();
+                console.log('Message auto-removed after 5 seconds');
             }
         }, 5000);
     }
