@@ -22,7 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form handling
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        console.log('Contact form found, attaching submit handler');
         contactForm.addEventListener('submit', handleContactSubmit);
+    } else {
+        console.error('Contact form not found! Form ID may be missing.');
     }
 });
 
@@ -31,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 async function handleContactSubmit(event) {
     event.preventDefault();
+    event.stopPropagation();
+    
+    console.log('Contact form submitted - handler called');
     
     const form = event.target;
     const submitButton = form.querySelector('button[type="submit"]');
@@ -62,6 +68,7 @@ async function handleContactSubmit(event) {
         // Use /api/contact.py for Vercel serverless function
         // FastAPI also has an alias route at /api/contact for local development
         const apiEndpoint = '/api/contact.py';
+        console.log('Submitting to:', apiEndpoint, 'with data:', formData);
         const response = await fetch(apiEndpoint, {
             method: 'POST',
             headers: {
@@ -70,7 +77,9 @@ async function handleContactSubmit(event) {
             body: JSON.stringify(formData)
         });
         
+        console.log('Response status:', response.status, 'ok:', response.ok);
         const data = await response.json();
+        console.log('Response data:', data);
         
         if (response.ok && data.success) {
             showFormMessage(data.message || 'Thank you for your message! We\'ll get back to you soon.', 'success');
