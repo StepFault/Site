@@ -59,7 +59,10 @@ async function handleContactSubmit(event) {
     submitButton.textContent = 'Sending...';
     
     try {
-        const response = await fetch('/api/contact', {
+        // Use /api/contact for FastAPI (local) or /api/contact.py for Vercel
+        // Vercel will auto-detect the Python function in api/contact.py
+        const apiEndpoint = '/api/contact';
+        const response = await fetch(apiEndpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
