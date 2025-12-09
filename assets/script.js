@@ -59,9 +59,9 @@ async function handleContactSubmit(event) {
     submitButton.textContent = 'Sending...';
     
     try {
-        // Use /api/contact for FastAPI (local) or /api/contact.py for Vercel
-        // Vercel will auto-detect the Python function in api/contact.py
-        const apiEndpoint = '/api/contact';
+        // Use /api/contact.py for Vercel serverless function
+        // FastAPI also has an alias route at /api/contact for local development
+        const apiEndpoint = '/api/contact.py';
         const response = await fetch(apiEndpoint, {
             method: 'POST',
             headers: {
