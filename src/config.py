@@ -2,6 +2,7 @@
 
 from pydantic_settings import BaseSettings
 from typing import List
+from pydantic import Field, field_validator
 
 
 class Settings(BaseSettings):
@@ -12,7 +13,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     host: str = "0.0.0.0"
     port: int = 8000
-    allowed_origins: List[str] = ["http://localhost:8000"]
+    allowed_origins: List[str] = Field(default_factory=lambda: ["http://localhost:8000"])
 
     class Config:
         env_file = ".env"
@@ -33,13 +34,13 @@ class Settings(BaseSettings):
                 file_secret_settings,
             )
 
-        def __init__(self, **kwargs):
-            super().__init__(**kwargs)
-            # Parse ALLOWED_ORIGINS from comma-separated string if needed
-            if isinstance(self.allowed_origins, str):
-                self.allowed_origins = [
-                    origin.strip() for origin in self.allowed_origins.split(",")
-                ]
+    @field_validator("allowed_origins", mode="before")
+    @classmethod
+    def parse_allowed_origins(cls, v):
+        """Parse allowed_origins from comma-separated string or list."""
+        if isinstance(v, str):
+            return [origin.strip() for origin in v.split(",") if origin.strip()]
+        return v
 
 
 settings = Settings()
