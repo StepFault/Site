@@ -1,4 +1,1 @@
-"""
-Test suite for StepFault application.
-"""
-
+"""Test suite."""
