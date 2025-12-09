@@ -2,6 +2,7 @@
 
 import logging
 from typing import Optional
+from uuid import UUID
 import asyncpg
 from contextlib import asynccontextmanager
 

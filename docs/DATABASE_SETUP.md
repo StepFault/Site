@@ -1,5 +1,7 @@
 # Database & Email Setup Guide
 
+> **Note:** If you can't find the connection string in Supabase UI, see `SUPABASE_CONNECTION_STRING.md` for manual construction instructions.
+
 ## Step 1: Set Up Supabase Database
 
 ### 1.1 Create Supabase Account
@@ -11,22 +13,49 @@
 ### 1.2 Get Database Credentials
 1. Go to **Settings** → **API**
 2. Copy:
-   - **Project URL** → `SUPABASE_URL`
-   - **anon public** key → `SUPABASE_KEY` (for client-side, optional)
-   - **service_role** key → `SUPABASE_KEY` (for server-side, recommended)
+   - **Project URL** → `SUPABASE_URL` (e.g., `https://abcdefghijklmnop.supabase.co`)
+   - **anon public** key → `SUPABASE_KEY` (for client-side, you can use this for now)
+   - **service_role** key → `SUPABASE_KEY` (for server-side, more secure - use this in production)
+
+**Note:** For now, using the `anon public` key is fine. Later, switch to `service_role` key for production as it has more permissions.
 
 ### 1.3 Get Database Connection String
-1. Go to **Settings** → **Database**
-2. Scroll to **Connection string** section
-3. Select **URI** tab
+
+**Option A: From Connect Button (Recommended)**
+1. In your Supabase project dashboard, click the **"Connect"** button at the top
+2. Look for **"Connection string"** or **"URI"** section
+3. Select **"Direct connection"** or **"Session mode"** (both work)
 4. Copy the connection string
 5. Replace `[YOUR-PASSWORD]` with your database password
 6. This is your `SUPABASE_DB_URL`
 
-**Format:**
-```
-postgresql://postgres:[PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres
-```
+**Option B: From Settings → Database**
+1. Go to **Settings** → **Database**
+2. Look for **"Connection string"**, **"Connection info"**, or **"Connection pooling"** section
+3. Find the URI format connection string
+4. Copy it and replace `[YOUR-PASSWORD]` with your database password
+
+**Option C: Manual Construction (If UI doesn't show it)**
+If you can't find the connection string in the UI, you can construct it manually:
+
+1. Get your project reference:
+   - Look at your `SUPABASE_URL` (e.g., `https://abcdefghijklmnop.supabase.co`)
+   - The project reference is the part before `.supabase.co` (e.g., `abcdefghijklmnop`)
+
+2. Construct the connection string:
+   ```
+   postgresql://postgres:[YOUR-PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres
+   ```
+   
+   Example:
+   ```
+   postgresql://postgres:mypassword123@db.abcdefghijklmnop.supabase.co:5432/postgres
+   ```
+
+**Important Notes:**
+- Use the database password you set (not your Supabase account password)
+- The password should NOT include brackets `[]` in the final connection string
+- For serverless/Vercel, you may want to use **"Transaction mode"** connection string instead
 
 ### 1.4 Create Database Table
 1. Go to **SQL Editor** in Supabase dashboard
