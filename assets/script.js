@@ -2,8 +2,11 @@
  * Main JavaScript for StepFault website
  */
 
+console.log('✅ script.js loaded');
+
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ DOMContentLoaded fired');
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     
