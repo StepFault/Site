@@ -2,11 +2,8 @@
  * Main JavaScript for StepFault website
  */
 
-console.log('✅ script.js loaded');
-
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ DOMContentLoaded fired');
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     
@@ -25,10 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form handling
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        console.log('Contact form found, attaching submit handler');
         contactForm.addEventListener('submit', handleContactSubmit);
-    } else {
-        console.error('Contact form not found! Form ID may be missing.');
     }
 });
 
@@ -38,8 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
 async function handleContactSubmit(event) {
     event.preventDefault();
     event.stopPropagation();
-    
-    console.log('Contact form submitted - handler called');
     
     const form = event.target;
     const submitButton = form.querySelector('button[type="submit"]');
@@ -71,7 +63,6 @@ async function handleContactSubmit(event) {
         // Use /api/contact.py for Vercel serverless function
         // FastAPI also has an alias route at /api/contact for local development
         const apiEndpoint = '/api/contact.py';
-        console.log('Submitting to:', apiEndpoint, 'with data:', formData);
         const response = await fetch(apiEndpoint, {
             method: 'POST',
             headers: {
@@ -80,18 +71,14 @@ async function handleContactSubmit(event) {
             body: JSON.stringify(formData)
         });
         
-        console.log('Response status:', response.status, 'ok:', response.ok);
         const data = await response.json();
-        console.log('Response data:', data);
         
         if (response.ok && data.success) {
-            console.log('✅ Form submission successful, showing success message');
             showFormMessage(data.message || 'Thank you for your message! We\'ll get back to you soon.', 'success');
             form.reset();
             // Scroll to form to show message
             form.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-            console.log('❌ Form submission failed:', data);
             showFormMessage(data.message || data.detail || 'Something went wrong. Please try again later.', 'error');
         }
     } catch (error) {
@@ -108,8 +95,6 @@ async function handleContactSubmit(event) {
  * Show form message to user
  */
 function showFormMessage(message, type) {
-    console.log(`Showing ${type} message:`, message);
-    
     // Remove existing message if any
     const existingMessage = document.getElementById('formMessage');
     if (existingMessage) {
@@ -128,9 +113,7 @@ function showFormMessage(message, type) {
     const submitButton = form.querySelector('button[type="submit"]');
     if (submitButton && submitButton.parentNode) {
         form.insertBefore(messageDiv, submitButton);
-        console.log('✅ Message inserted before submit button');
     } else {
-        console.error('❌ Could not find submit button to insert message');
         // Fallback: append to form
         form.appendChild(messageDiv);
     }
@@ -140,7 +123,6 @@ function showFormMessage(message, type) {
         setTimeout(() => {
             if (messageDiv.parentNode) {
                 messageDiv.remove();
-                console.log('Message auto-removed after 5 seconds');
             }
         }, 5000);
     }
