@@ -14,6 +14,18 @@ class Settings(BaseSettings):
     host: str = "0.0.0.0"
     port: int = 8000
     allowed_origins: Union[str, List[str]] = Field(default="http://localhost:8000")
+    
+    # Database (Supabase)
+    supabase_url: str = Field(default="", description="Supabase project URL")
+    supabase_key: str = Field(default="", description="Supabase anon/service key")
+    supabase_db_url: str = Field(default="", description="Supabase PostgreSQL connection string")
+    
+    # Email (Zoho)
+    zoho_email: str = Field(default="", description="Zoho email address for SMTP")
+    zoho_password: str = Field(default="", description="Zoho app password (not regular password)")
+    zoho_smtp_host: str = Field(default="smtp.zoho.com", description="Zoho SMTP host")
+    zoho_smtp_port: int = Field(default=587, description="Zoho SMTP port")
+    notification_email: str = Field(default="", description="Email address to receive notifications")
 
     class Config:
         env_file = ".env"

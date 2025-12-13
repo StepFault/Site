@@ -1,0 +1,11 @@
+{
+  "name": "stepfault-site",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vercel dev",
+    "vercel": "vercel"
+  },
+  "devDependencies": {
+    "vercel": "^49.1.2"
+  }
+}

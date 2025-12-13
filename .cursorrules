@@ -1,0 +1,330 @@
+# StepFault Site - Cursor IDE System Instructions
+
+## Tech Stack
+
+### Backend
+- **Language**: Python 3.12
+- **Framework**: FastAPI 0.109.0 (async web framework)
+- **ASGI Server**: Uvicorn with standard extras
+- **Validation**: Pydantic v2.5.3 (BaseModel, Field validators)
+- **Settings**: Pydantic Settings v2.1.0 (environment variable management)
+- **Database**: 
+  - Supabase PostgreSQL (managed)
+  - asyncpg 0.29.0 (async PostgreSQL driver)
+  - psycopg2-binary 2.9.9 (fallback sync driver)
+- **Email**: aiosmtplib 3.0.1 (async SMTP client for Zoho Mail)
+- **HTTP Client**: httpx 0.26.0 (for external API calls and testing)
+
+### Frontend
+- **Type**: Static HTML/CSS/JavaScript (vanilla JS, no framework)
+- **Assets**: Located in `/assets/` directory
+- **Entry Point**: `index.html` at project root
+
+### Deployment
+- **Platform**: Vercel
+- **Runtime**: Python 3.12 serverless functions
+- **Static Hosting**: Vercel auto-detects static files
+- **Function Format**: Class-based `BaseHTTPRequestHandler` in `/api/` directory
+
+### Development Tools
+- **Testing**: pytest 7.4.4, pytest-asyncio 0.23.3, pytest-cov 7.0.0
+- **Code Quality**: black 24.1.1 (formatter), ruff 0.1.11 (linter)
+- **Environment**: python-dotenv 1.0.0
+
+### External Services
+- **Database**: Supabase PostgreSQL
+- **Email**: Zoho Mail (SMTP)
+
+---
+
+## Coding Style & Principles
+
+### Python Style Guide
+- **PEP 8 Compliance**: Follow Python PEP 8 style guide
+- **Type Hints**: Use type hints for all function parameters and return types
+- **Async/Await**: Prefer async/await over sync operations for I/O-bound tasks
+- **Docstrings**: All public functions, classes, and modules must have docstrings (Google style)
+- **Naming Conventions**:
+  - Classes: `PascalCase` (e.g., `ContactService`, `ZohoEmailService`)
+  - Functions/Methods: `snake_case` (e.g., `process_contact_submission`, `send_email`)
+  - Constants: `UPPER_SNAKE_CASE` (e.g., `MAX_RETRIES`, `DEFAULT_TIMEOUT`)
+  - Private methods: Prefix with `_` (e.g., `_send_email`, `_validate_input`)
+
+### Functional Programming Principles
+- **Pure Functions**: Prefer pure functions where possible (no side effects)
+- **Immutability**: Avoid mutating function parameters; return new objects instead
+- **DRY (Don't Repeat Yourself)**: Extract common logic into reusable functions/utilities
+- **Single Responsibility**: Each function/class should have one clear purpose
+- **Arrow Functions**: N/A (Python doesn't have arrow functions, but prefer lambda for simple operations)
+
+### Code Organization
+- **Service Layer Pattern**: Business logic in `/src/services/`
+- **Repository Pattern**: Database operations in `/src/db/`
+- **Schema Validation**: Request/response models in `/src/api/schemas/`
+- **Route Handlers**: API endpoints in `/src/api/routes/`
+- **Configuration**: Centralized in `/src/config.py` using Pydantic Settings
+
+### Error Handling
+- **Specific Exceptions**: Catch specific exceptions, not bare `except:`
+- **Logging**: Use Python `logging` module with appropriate levels (DEBUG, INFO, WARNING, ERROR)
+- **Graceful Degradation**: Continue processing even if non-critical operations fail (e.g., email sending)
+- **User-Friendly Messages**: Return clear error messages to API consumers
+
+---
+
+## Vercel Best Practices
+
+### Serverless Function Guidelines
+- **Function Location**: Place serverless functions in `/api/` directory
+- **Handler Format**: Must use class-based `BaseHTTPRequestHandler` (Vercel Python requirement)
+- **Runtime**: Specify `python3.12` in `vercel.json` functions config
+- **Async Operations**: Use `run_async_function` utility from `src.services.core.contact_processor` to run async code in sync context
+- **Environment Variables**: All env vars must be set in Vercel dashboard (Settings → Environment Variables)
+- **Cold Starts**: Minimize imports and initialization in serverless functions
+- **Function Size**: Keep functions lightweight; move heavy logic to service layer
+
+### Environment Variables
+- **Naming**: Use `UPPER_SNAKE_CASE` (e.g., `SUPABASE_DB_URL`, `ZOHO_EMAIL`)
+- **Required Variables**:
+  - `SUPABASE_URL`, `SUPABASE_KEY`, `SUPABASE_DB_URL`
+  - `ZOHO_EMAIL`, `ZOHO_PASSWORD`, `ZOHO_SMTP_HOST`, `ZOHO_SMTP_PORT`
+  - `NOTIFICATION_EMAIL`
+- **Local Development**: Use `.env` file (gitignored)
+- **Vercel**: Set for Production, Preview, and Development environments
+- **Security**: Never commit secrets; use `.env.example` as template
+
+### Static File Serving
+- **Auto-Detection**: Vercel auto-detects static files (HTML, CSS, JS, images)
+- **No Build Step**: Static files are served as-is (no bundling/compilation)
+- **Asset Paths**: Use relative paths in HTML (e.g., `/assets/style.css`)
+- **CORS**: Configure CORS in FastAPI middleware for local dev; Vercel handles CORS automatically
+
+### Deployment Workflow
+- **Branch Strategy**: `main` branch auto-deploys to production
+- **Preview Deployments**: Feature branches get preview deployments
+- **Build Command**: None required (static site + serverless functions)
+- **Output Directory**: Not applicable (Vercel auto-detects)
+
+---
+
+## Type Safety
+
+### Python Type Hints
+- **Required**: All function signatures must include type hints
+- **Return Types**: Always specify return types (use `-> None` for void functions)
+- **Optional Types**: Use `Optional[Type]` or `Type | None` (Python 3.10+) for nullable values
+- **Union Types**: Use `Union[Type1, Type2]` or `Type1 | Type2` for multiple possible types
+- **Generic Types**: Use `List[Type]`, `Dict[str, Type]`, `Tuple[Type1, Type2]` from `typing`
+- **No `Any`**: Avoid `Any` type; use `object` or proper types instead
+- **Pydantic Models**: Use Pydantic `BaseModel` for data validation and serialization
+
+### Type Checking Tools
+- **mypy**: Consider adding mypy for static type checking (not currently in requirements)
+- **IDE Support**: Leverage IDE type hints for autocomplete and error detection
+
+---
+
+## Project Structure
+
+### Directory Layout
+```
+/
+├── api/                    # Vercel serverless functions
+│   └── contact.py          # Contact form handler (BaseHTTPRequestHandler)
+├── assets/                 # Static frontend assets
+│   ├── script.js          # Frontend JavaScript
+│   ├── style.css          # Stylesheet
+│   └── *.svg, *.jpg       # Images and icons
+├── migrations/             # Database migration SQL files
+│   └── 001_*.sql          # Migration scripts
+├── scripts/                # Utility scripts
+│   └── test_*.py          # Test/utility scripts
+├── src/                    # FastAPI application source
+│   ├── api/               # API layer
+│   │   ├── main.py        # FastAPI app initialization
+│   │   ├── routes/        # API route handlers
+│   │   └── schemas/       # Pydantic request/response models
+│   ├── config.py          # Application configuration (Pydantic Settings)
+│   ├── db/                # Database layer
+│   │   ├── database.py    # Connection pool and utilities
+│   │   └── models.py      # Database models (Pydantic)
+│   └── services/          # Business logic layer
+│       ├── core/          # Core services
+│       └── email/         # Email services (Zoho)
+├── tests/                  # Test suite
+│   └── test_api/          # API endpoint tests
+├── docs/                   # Documentation
+├── index.html             # Frontend entry point
+├── requirements.txt       # Python dependencies
+├── vercel.json            # Vercel configuration
+└── .env.example           # Environment variable template
+```
+
+### File Organization Rules
+- **API Routes**: `/src/api/routes/` - One file per resource (e.g., `contact.py`)
+- **Schemas**: `/src/api/schemas/` - Pydantic models for request/response validation
+- **Services**: `/src/services/` - Business logic, organized by domain (e.g., `core/`, `email/`)
+- **Database**: `/src/db/` - Database connection, models, and repository functions
+- **Config**: `/src/config.py` - Single file for all configuration (Pydantic Settings)
+- **Tests**: Mirror source structure in `/tests/` (e.g., `test_api/test_contact.py`)
+
+### Import Conventions
+- **Absolute Imports**: Use absolute imports from `src.` (e.g., `from src.config import settings`)
+- **Grouping**: Group imports: stdlib, third-party, local (separated by blank line)
+- **Vercel Functions**: Use `sys.path.insert()` to add parent directory for imports
+
+---
+
+## Git Conventions
+
+### Commit Message Format
+- **Format**: `type(scope): subject`
+- **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+- **Scope**: Optional but recommended (e.g., `feat(contact)`, `fix(api)`)
+- **Examples**: 
+  - `feat(contact): add database storage for submissions`
+  - `fix(api): handle null values in email validation`
+  - `docs(setup): update database setup instructions`
+
+### Branching Model
+- **main**: Production-ready code
+- **dev**: Integration branch for development
+- **feature/***: New features (e.g., `feature/user-authentication`)
+- **bugfix/***: Bug fixes (e.g., `bugfix/login-error`)
+- **hotfix/***: Critical production fixes (e.g., `hotfix/security-patch`)
+
+---
+
+## Testing Guidelines
+
+### Test Structure
+- **Location**: `/tests/` directory
+- **Naming**: `test_*.py` files, `test_*` functions
+- **Async Tests**: Use `pytest-asyncio` for async test functions
+- **Fixtures**: Define in `tests/conftest.py`
+
+### Test Coverage
+- **Target**: Aim for >80% coverage on business logic
+- **Focus**: Test service layer and API endpoints
+- **Database**: Use test database or mocks for database operations
+- **Email**: Mock email sending in tests
+
+---
+
+## Security Best Practices
+
+### Environment Variables
+- **Never Commit**: `.env` file is gitignored
+- **Template**: Use `.env.example` for documentation
+- **Vercel**: Set all secrets in Vercel dashboard
+
+### Database
+- **Connection Strings**: Use connection pooling, never hardcode credentials
+- **SQL Injection**: Use parameterized queries (asyncpg handles this)
+
+### API Security
+- **CORS**: Configure allowed origins (not `*` in production)
+- **Validation**: Always validate input using Pydantic schemas
+- **Error Messages**: Don't expose internal errors to clients
+
+---
+
+## Performance Considerations
+
+### Async Operations
+- **Database**: Always use async database operations (asyncpg)
+- **Email**: Use async SMTP client (aiosmtplib)
+- **HTTP**: Use async HTTP client (httpx) for external APIs
+
+### Connection Pooling
+- **Database**: Use connection pool (configured in `src/db/database.py`)
+- **Pool Size**: Keep pool size reasonable (min=1, max=5 for serverless)
+
+### Vercel Limits
+- **Function Timeout**: 10s (Hobby), 60s (Pro)
+- **Memory**: 1024 MB default
+- **Cold Starts**: Minimize initialization time
+
+---
+
+## Documentation Standards
+
+### Code Documentation
+- **Docstrings**: Google-style docstrings for all public functions/classes
+- **Type Hints**: Use type hints as inline documentation
+- **Comments**: Explain "why", not "what" (code should be self-explanatory)
+
+### Project Documentation
+- **README.md**: Project overview, setup instructions
+- **docs/**: Detailed documentation (architecture, setup guides, etc.)
+- **Migration Files**: Include comments explaining schema changes
+
+---
+
+## Common Patterns
+
+### Service Layer Pattern
+```python
+class ContactService:
+    """Service for handling contact form submissions."""
+    
+    async def process_contact_submission(
+        self, contact_request: ContactRequest
+    ) -> Dict[str, str]:
+        """Process submission with validation and side effects."""
+        # Business logic here
+        pass
+```
+
+### Pydantic Schema Pattern
+```python
+class ContactRequest(BaseModel):
+    """Request schema for contact form."""
+    name: str = Field(..., min_length=1, max_length=100)
+    email: str = Field(..., pattern=r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+    message: str = Field(..., min_length=10, max_length=2000)
+```
+
+### Vercel Handler Pattern
+```python
+class handler(BaseHTTPRequestHandler):
+    """Vercel serverless function handler."""
+    
+    def do_POST(self):
+        """Handle POST requests."""
+        # Use run_async_function for async operations
+        pass
+```
+
+---
+
+## Quick Reference
+
+### Key Files
+- **Config**: `/src/config.py` - All environment variables
+- **Main App**: `/src/api/main.py` - FastAPI app initialization
+- **Vercel Function**: `/api/contact.py` - Serverless contact handler
+- **Database**: `/src/db/database.py` - Connection pool
+- **Contact Service**: `/src/services/core/contact_service.py` - Business logic
+
+### Common Commands
+```bash
+# Local development
+uvicorn src.api.main:app --reload --port 8000
+
+# Run tests
+pytest
+
+# Format code
+black src/ tests/
+
+# Lint code
+ruff check src/ tests/
+```
+
+---
+
+**Last Updated**: 2025-01-09
+**Project**: StepFault Site
+**Maintainer**: Development Team
+
