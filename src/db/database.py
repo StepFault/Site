@@ -2,9 +2,7 @@
 
 import logging
 from typing import Optional
-from uuid import UUID
 import asyncpg
-from contextlib import asynccontextmanager
 
 from src.config import settings
 from src.db.models import ContactSubmission
@@ -39,14 +37,6 @@ async def close_pool():
         await _pool.close()
         _pool = None
         logger.info("Database connection pool closed")
-
-
-@asynccontextmanager
-async def get_connection():
-    """Get a database connection from the pool."""
-    pool = await get_pool()
-    async with pool.acquire() as connection:
-        yield connection
 
 
 async def save_contact_submission(submission: ContactSubmission) -> ContactSubmission:
@@ -84,30 +74,4 @@ async def save_contact_submission(submission: ContactSubmission) -> ContactSubmi
             created_at=row['created_at'],
             status=row['status'],
         )
-
-
-async def get_contact_submission(submission_id: UUID) -> Optional[ContactSubmission]:
-    """Get a contact submission by ID."""
-    pool = await get_pool()
-    
-    async with pool.acquire() as conn:
-        row = await conn.fetchrow(
-            """
-            SELECT id, name, email, message, created_at, status
-            FROM contact_submissions
-            WHERE id = $1
-            """,
-            submission_id,
-        )
-        
-        if row:
-            return ContactSubmission(
-                id=row['id'],
-                name=row['name'],
-                email=row['email'],
-                message=row['message'],
-                created_at=row['created_at'],
-                status=row['status'],
-            )
-        return None
 

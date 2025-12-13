@@ -4,7 +4,7 @@ import asyncio
 import logging
 from typing import Dict
 
-from src.db.database import save_contact_submission, get_pool, close_pool
+from src.db.database import save_contact_submission
 from src.db.models import ContactSubmission
 from src.services.email.zoho_service import ZohoEmailService
 
