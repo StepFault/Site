@@ -1,10 +1,10 @@
 """Database connection and operations for Supabase PostgreSQL."""
 
 import logging
+import os
 from typing import Optional
 import asyncpg
 
-from src.config import settings
 from src.db.models import ContactSubmission
 
 logger = logging.getLogger(__name__)
@@ -17,11 +17,25 @@ async def get_pool() -> asyncpg.Pool:
     """Get or create database connection pool."""
     global _pool
     if _pool is None:
-        if not settings.supabase_db_url:
-            raise ValueError("SUPABASE_DB_URL environment variable is not set")
+        # Read directly from os.environ (same as email service)
+        db_url = os.environ.get("SUPABASE_DB_URL", "")
+        
+        if not db_url:
+            # Fallback to settings for backward compatibility
+            try:
+                from src.config import settings
+                db_url = settings.supabase_db_url
+            except Exception:
+                pass
+        
+        if not db_url:
+            raise ValueError(
+                "SUPABASE_DB_URL environment variable is not set. "
+                "Please set it in your environment or Vercel dashboard."
+            )
         
         _pool = await asyncpg.create_pool(
-            settings.supabase_db_url,
+            db_url,
             min_size=1,
             max_size=5,
             command_timeout=5,
