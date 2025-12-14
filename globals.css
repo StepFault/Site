@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  body {
+    @apply bg-space-black text-white font-sans antialiased;
+    background-image: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f172a 100%);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono font-semibold;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+@layer components {
+  /* Glassmorphism utility */
+  .glass {
+    @apply backdrop-blur-glass bg-white/5 border border-white/10;
+  }
+
+  .glass-strong {
+    @apply backdrop-blur-glass-strong bg-white/10 border border-white/20;
+  }
+
+  .glass-quantum {
+    @apply backdrop-blur-glass bg-quantum-500/10 border border-quantum-500/20;
+  }
+
+  .glass-ai {
+    @apply backdrop-blur-glass bg-ai-500/10 border border-ai-500/20;
+  }
+
+  /* Technical borders utility */
+  .border-technical {
+    @apply border border-quantum-500/20;
+  }
+
+  .border-technical-strong {
+    @apply border border-quantum-500/40;
+  }
+
+  .border-technical-ai {
+    @apply border border-ai-500/20;
+  }
+
+  .border-technical-ai-strong {
+    @apply border border-ai-500/40;
+  }
+
+  /* Technical border with glow effects */
+  .border-technical-glow {
+    @apply border-technical shadow-technical-glow;
+  }
+
+  .border-technical-ai-glow {
+    @apply border-technical-ai shadow-ai-glow;
+  }
+}
+
+@layer utilities {
+  /* Additional glassmorphism variants */
+  .glass-dark {
+    @apply backdrop-blur-glass bg-black/20 border border-white/5;
+  }
+
+  .glass-indigo {
+    @apply backdrop-blur-glass bg-indigo-dark-100/30 border border-indigo-dark-200/40;
+  }
+
+  /* Technical border utilities with opacity control */
+  .border-tech {
+    border: 1px solid rgba(0, 188, 212, 0.15);
+  }
+
+  .border-tech-ai {
+    border: 1px solid rgba(156, 39, 176, 0.15);
+  }
+
+  .border-tech-subtle {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Text utilities for scientific aesthetic */
+  .text-quantum {
+    @apply text-quantum-500;
+  }
+
+  .text-ai {
+    @apply text-ai-500;
+  }
+
+  .text-quantum-glow {
+    @apply text-quantum-500;
+    text-shadow: 0 0 8px rgba(0, 188, 212, 0.5);
+  }
+
+  .text-ai-glow {
+    @apply text-ai-500;
+    text-shadow: 0 0 8px rgba(156, 39, 176, 0.5);
+  }
+}

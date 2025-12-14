@@ -6,6 +6,9 @@
     "vercel": "vercel"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19",
     "vercel": "^49.1.2"
   }
 }
