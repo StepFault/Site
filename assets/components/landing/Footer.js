@@ -20,7 +20,10 @@ export function createFooter() {
         </div>
         <div style="flex: 1 1 200px; text-align: right; min-width: 180px;">
           <span class="font-sans" style="font-size: 0.9rem;">&copy; 2025 StepFault. All rights reserved.</span><br>
-          <span class="font-sans" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem; display: block;">Privacy Policy | Terms of Service</span>
+          <span class="font-sans" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem; display: block;">
+            <a href="privacy-policy.html" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#666'">Privacy Policy</a> | 
+            <a href="terms-of-service.html" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#666'">Terms of Service</a>
+          </span>
         </div>
       </div>
     </footer>

@@ -10,7 +10,9 @@
 }
 
 .logo {
-  height: 40px;
+  height: 24px;
+  width: auto;
+  max-height: 24px;
 }
 
 .nav-links {
@@ -65,7 +67,9 @@
   }
   
   .logo {
-    height: 32px;
+    height: 24px;
+    width: auto;
+    max-height: 24px;
     margin-bottom: 0.5rem;
   }
   

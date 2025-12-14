@@ -70,12 +70,47 @@ async def submit_contact_vercel_alias(contact_request: ContactRequest) -> Contac
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
 
+def _get_project_root() -> str:
+    """Get the project root directory."""
+    return os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
 @app.get("/", include_in_schema=False)
 async def read_root():
     """Serve the main index.html file."""
-    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    project_root = _get_project_root()
     index_path = os.path.join(project_root, "index.html")
-    return FileResponse(index_path)
+    return FileResponse(index_path, media_type="text/html")
+
+
+@app.get("/index.html", include_in_schema=False)
+async def read_index():
+    """Serve the main index.html file (explicit path)."""
+    project_root = _get_project_root()
+    index_path = os.path.join(project_root, "index.html")
+    return FileResponse(index_path, media_type="text/html")
+
+
+@app.get("/privacy-policy.html", include_in_schema=False)
+async def privacy_policy():
+    """Serve the privacy policy page."""
+    project_root = _get_project_root()
+    privacy_path = os.path.join(project_root, "privacy-policy.html")
+    if not os.path.exists(privacy_path):
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Privacy policy page not found")
+    return FileResponse(privacy_path, media_type="text/html")
+
+
+@app.get("/terms-of-service.html", include_in_schema=False)
+async def terms_of_service():
+    """Serve the terms of service page."""
+    project_root = _get_project_root()
+    terms_path = os.path.join(project_root, "terms-of-service.html")
+    if not os.path.exists(terms_path):
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Terms of service page not found")
+    return FileResponse(terms_path, media_type="text/html")
 
 
 @app.get("/health", tags=["health"])
