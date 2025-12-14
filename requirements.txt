@@ -23,7 +23,7 @@ pytest-cov==7.0.0
 asyncpg==0.29.0
 
 # Email
-aiosmtplib==3.0.1
+# Using Python's built-in smtplib (no external dependency needed)
 
 # Development Tools
 black==24.1.1
