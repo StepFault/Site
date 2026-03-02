@@ -100,6 +100,19 @@ export async function POST(
   const { name, email, message }: ContactPayload = parsed.data;
 
   // 3 ── Persist to Supabase `contact_submissions`
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) {
+    console.error("[contact] Missing Supabase env vars in this environment.");
+    return NextResponse.json<ErrorBody>(
+      {
+        success: false,
+        error: "Contact service is temporarily unavailable. Please try again later.",
+      },
+      { status: 503 }
+    );
+  }
+
   const { error: dbError } = await supabaseAdmin()
     .from("contact_submissions")
     .insert({ name, email, message });
