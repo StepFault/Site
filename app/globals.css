@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Calm Infrastructure — Strict Dark Mode Baseline
+ * Backgrounds:  bg-black / bg-zinc-950
+ * Text:         text-zinc-200 (primary), text-zinc-500 (secondary)
+ * Accent:       text-emerald-400 (live status, terminal output)
+ * Borders:      border-zinc-800 (sharp, minimal rounded)
+ */
+
+@layer base {
+  html {
+    @apply bg-black text-zinc-200 antialiased;
+  }
+}
