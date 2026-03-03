@@ -1,0 +1,104 @@
+{
+  "projects": [
+    {
+      "id": "realverdict-ai",
+      "slug": "realverdict-ai",
+      "name": "RealVerdict AI",
+      "tagline": "Deterministic legal reasoning at machine speed.",
+      "description": "Multi-agent orchestration system that synthesizes case law, statutory text, and precedent vectors to produce structured legal opinions. Built for high-stakes litigation support with full audit trails and human-in-the-loop verification at every inference step.",
+      "domain": "Legal Intelligence",
+      "status": "deployed",
+      "image": "/projects/realverdict.svg",
+      "tags": ["LLM Orchestration", "RAG", "Legal AI", "HITL"],
+      "metrics": [
+        { "label": "Case citations processed", "value": "2.4M+" },
+        { "label": "Hallucination rate", "value": "< 0.3%" },
+        { "label": "Avg. latency", "value": "1.8s" }
+      ],
+      "year": 2024,
+      "colSpan": 1
+    },
+    {
+      "id": "cronometer",
+      "slug": "cronometer",
+      "name": "Cronometer",
+      "tagline": "Precision nutrition intelligence for clinical outcomes.",
+      "description": "AI-powered health data platform integrating dietary logs, biomarker panels, and wearable telemetry into a unified inference engine. Powers personalized intervention recommendations with clinical-grade traceability and privacy-preserving federated learning.",
+      "domain": "Health Data Platform",
+      "status": "deployed",
+      "image": "/projects/cronometer.svg",
+      "tags": ["Federated Learning", "Biomarkers", "Clinical AI", "Privacy"],
+      "metrics": [
+        { "label": "Daily active users", "value": "180K+" },
+        { "label": "Data points processed/day", "value": "50M+" },
+        { "label": "Model accuracy", "value": "94.7%" }
+      ],
+      "year": 2023,
+      "colSpan": 1
+    },
+    {
+      "id": "adlumin",
+      "slug": "adlumin",
+      "name": "Adlumin",
+      "tagline": "Autonomous threat detection and incident orchestration.",
+      "description": "Cybersecurity operations platform combining real-time log correlation, behavioral anomaly detection, and automated playbook execution. Reduces mean-time-to-detect from hours to seconds across distributed enterprise environments.",
+      "domain": "Cybersecurity Ops",
+      "status": "deployed",
+      "image": "/projects/adlumin.svg",
+      "tags": ["Anomaly Detection", "SIEM", "Automated Response", "Zero-Trust"],
+      "metrics": [
+        { "label": "Events correlated/sec", "value": "1.2M" },
+        { "label": "MTTD reduction", "value": "97%" },
+        { "label": "False positive rate", "value": "0.04%" }
+      ],
+      "year": 2023,
+      "colSpan": 1
+    },
+    {
+      "id": "fas",
+      "slug": "fas",
+      "name": "FAS",
+      "tagline": "Fault-tolerant advisory systems for financial infrastructure.",
+      "description": "Financial Advisory System leveraging consensus-driven multi-agent pipelines to generate market analysis, risk assessments, and regulatory compliance summaries. Designed for institutional-grade reliability with deterministic output guarantees.",
+      "domain": "Financial Advisory",
+      "status": "deployed",
+      "image": "/projects/fas.svg",
+      "tags": ["Risk Modeling", "Compliance AI", "Multi-Agent", "Deterministic"],
+      "metrics": [
+        { "label": "Reports generated/month", "value": "12K+" },
+        { "label": "Regulatory frameworks", "value": "14" },
+        { "label": "Uptime SLA", "value": "99.99%" }
+      ],
+      "year": 2024,
+      "colSpan": 1
+    },
+    {
+      "id": "quantum-ai-orchestration",
+      "slug": "quantum-ai-orchestration",
+      "name": "Quantum-Assisted AI Orchestration",
+      "tagline": "The next frontier — probabilistic reasoning at quantum scale.",
+      "description": "A research initiative exploring quantum annealing and variational quantum circuits as optimization layers within multi-agent AI pipelines. Target applications span legal discovery, medical differential diagnosis, and real-time crisis management — domains where classical compute reaches its ceiling.",
+      "domain": "Applied Research Horizon",
+      "status": "roadmap",
+      "image": null,
+      "tags": ["Quantum Computing", "VQC", "Crisis Management", "Medical AI", "Legal AI"],
+      "metrics": [
+        { "label": "Target domains", "value": "Law · Med · Crisis" },
+        { "label": "Research stage", "value": "Pre-Alpha" },
+        { "label": "ETA", "value": "2026 Q4" }
+      ],
+      "year": 2026,
+      "colSpan": 2
+    }
+  ],
+  "partners": {
+    "academic": [
+      { "id": "mit", "name": "MIT", "logo": "/logos/mit.svg" },
+      { "id": "stanford", "name": "Stanford", "logo": "/logos/stanford.svg" }
+    ],
+    "infrastructure": [
+      { "id": "nextjs", "name": "Next.js", "logo": "/logos/nextjs.svg" },
+      { "id": "supabase", "name": "Supabase", "logo": "/logos/supabase.svg" }
+    ]
+  }
+}
