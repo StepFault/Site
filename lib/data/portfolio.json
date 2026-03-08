@@ -94,11 +94,37 @@
   "partners": {
     "academic": [
       { "id": "mit", "name": "MIT", "logo": "/logos/mit.svg" },
-      { "id": "stanford", "name": "Stanford", "logo": "/logos/stanford.svg" }
+      { "id": "stanford", "name": "Stanford", "logo": "/logos/stanford.svg" },
+      { "id": "ucla", "name": "UCLA", "logo": "/logos/ucla.svg" },
+      { "id": "berkeley", "name": "Berkeley", "logo": "/logos/berkeley.svg" },
+      { "id": "osu", "name": "OSU", "logo": "/logos/osu.svg" },
+      { "id": "jhu", "name": "Johns Hopkins", "logo": "/logos/jhu.svg" }
     ],
-    "infrastructure": [
-      { "id": "nextjs", "name": "Next.js", "logo": "/logos/nextjs.svg" },
-      { "id": "supabase", "name": "Supabase", "logo": "/logos/supabase.svg" }
-    ]
+    "infrastructure": {
+      "application": [
+        { "id": "nextjs", "name": "Next.js", "logo": "/logos/nextjs.svg" },
+        { "id": "react", "name": "React", "logo": "/logos/react.svg" },
+        { "id": "typescript", "name": "TypeScript", "logo": "/logos/typescript.svg" },
+        { "id": "tailwind", "name": "Tailwind CSS", "logo": "/logos/tailwind.svg" },
+        { "id": "vercel", "name": "Vercel", "logo": "/logos/vercel.svg" },
+        { "id": "supabase", "name": "Supabase", "logo": "/logos/supabase.svg" },
+        { "id": "zod", "name": "Zod", "logo": "/logos/zod.svg" },
+        { "id": "framer", "name": "Framer Motion", "logo": "/logos/framer.svg" }
+      ],
+      "ai": [
+        { "id": "openai", "name": "OpenAI", "logo": "/logos/openai.svg" },
+        { "id": "langchain", "name": "LangChain", "logo": "/logos/langchain.svg" },
+        { "id": "huggingface", "name": "Hugging Face", "logo": "/logos/huggingface.svg" },
+        { "id": "pytorch", "name": "PyTorch", "logo": "/logos/pytorch.svg" },
+        { "id": "tensorflow", "name": "TensorFlow", "logo": "/logos/tensorflow.svg" },
+        { "id": "anthropic", "name": "Anthropic", "logo": "/logos/anthropic.svg" }
+      ],
+      "quantum": [
+        { "id": "qiskit", "name": "Qiskit", "logo": "/logos/qiskit.svg" },
+        { "id": "cirq", "name": "Cirq", "logo": "/logos/cirq.svg" },
+        { "id": "ibm-quantum", "name": "IBM Quantum", "logo": "/logos/ibm-quantum.svg" },
+        { "id": "pennylane", "name": "PennyLane", "logo": "/logos/pennylane.svg" }
+      ]
+    }
   }
 }

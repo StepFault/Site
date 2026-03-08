@@ -1,0 +1,58 @@
+---
+description: Enforces strict design system, dark mode, and Framer Motion rules for all UI and section components.
+globs: 
+  - components/ui/**/*.tsx
+  - components/sections/**/*.tsx
+alwaysApply: false
+---
+# Stepfault.ai UI Component Rules
+
+## 1. Aesthetic & Vibe (Stripe Docs meets Elite CLI)
+- **Dark Mode Only:** Strictly use dark mode classes. Do not write light mode equivalents.
+  - Backgrounds: `bg-zinc-950` or `bg-black`.
+  - Primary Text: `text-zinc-200`.
+  - Secondary Text: `text-zinc-500`.
+- **Accents:** Use a single sharp accent color (`text-emerald-400` or `text-blue-500`) ONLY for live status indicators, terminal outputs, and successful data-flow highlights. Do not overuse accents.
+- **Typography:** - Copy/Body: Use `font-sans` (Inter).
+  - Data/Terminal/Metrics: Use `font-mono` (JetBrains Mono / Fira Code).
+- **Geometry:** Borders must be sharp (`border-zinc-800`), with minimal rounding (max `rounded-md`).
+
+## 2. Component Architecture
+- **Server Components by Default:** All components must be React Server Components by default.
+- **Client Components:** Use the `"use client"` directive strictly at the top of the file *only* if the component requires browser APIs, React state (`useState`, `useEffect`, `useRef`), or interactive UI/Framer Motion.
+
+## 3. Animations & Interactivity
+- **Framer Motion:** Use Framer Motion for deterministic MAPOS multi-agent simulations. 
+- Ensure zero broken syntax in variants.
+- Keep animations snappy, deterministic, and professional. Avoid "bouncy" or playful spring animations; prefer stiff/damped springs or ease-in-out transitions to simulate fast terminal/agent data flows.
+
+## Examples
+
+<example>
+// ✅ Good: Server component with strict palette and typography
+export default function TerminalWidget() {
+  return (
+    <div className="bg-zinc-950 border border-zinc-800 rounded-md p-4 flex flex-col gap-2">
+      <p className="font-mono text-emerald-400 text-sm">
+        {`> MAPOS Agent [Law] connected`}
+      </p>
+      <p className="font-mono text-zinc-500 text-sm">
+        Awaiting deterministic routing...
+      </p>
+    </div>
+  );
+}
+</example>
+
+<example type="invalid">
+// ❌ Bad: Missing "use client", light mode classes used, overly rounded borders
+import { motion } from "framer-motion";
+
+export default function BadCard() {
+  return (
+    <motion.div className="bg-white dark:bg-zinc-800 rounded-3xl p-8">
+      <h2 className="text-black font-sans text-2xl">Hello World</h2>
+    </motion.div>
+  );
+}
+</example>

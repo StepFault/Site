@@ -302,6 +302,7 @@ export default function AccessGate() {
             type="submit"
             disabled={isLoading}
             className="rounded bg-emerald-400 px-5 py-2 font-mono text-xs text-black transition-colors hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
+            suppressHydrationWarning
           >
             {isLoading ? "Processing..." : "Transmit Request"}
           </button>

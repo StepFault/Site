@@ -1,102 +1,35 @@
-# Technology Stack Rules
+# Technology Stack Rules (Stepfault.ai Showroom)
 
-Guidelines specific to the technologies and frameworks used in this project.
+Guidelines specific to the Next.js and TypeScript architecture used in this project. **CRITICAL:** This repository DOES NOT contain the actual MAPOS backend Python/Node orchestration logic. It is a pure frontend simulation.
 
-## Backend Rules
+## Core Framework
+- **Next.js App Router:** Assume React 19 and Next.js App Router for all routing.
+- **TypeScript:** Strict TypeScript must be used across all files. No `any` types.
+- **Server Components Default:** Default to React Server Components. 
+- **Client Components:** Use `"use client"` strictly at the top of files that require browser APIs, state, or interactive UI/Framer Motion.
 
-### Python Standards
-- Assume modern Python (3.11+) with full type hints
-- Use type annotations for all function parameters and return types
-- Prefer `typing` module for complex types (Optional, List, Dict, etc.)
-- Use dataclasses or Pydantic models for data structures
+## Styling & UI Design
+- **Tailwind CSS:** Use Tailwind for all styling. Do not create custom `.css` files unless defining global font variables.
+- **Dark Mode Only:** The site is strictly dark mode. 
+  - Backgrounds: Use `bg-zinc-950` or `bg-black`.
+  - Text: Primary copy is `text-zinc-200`, secondary is `text-zinc-500`.
+  - Accents: Use `text-emerald-400` or `text-blue-500` strictly for live status indicators, terminal outputs, and success states.
+- **Typography:** - Body/Copy: `font-sans` (Inter).
+  - Terminal/Data/Metrics: `font-mono` (JetBrains Mono or Fira Code).
+- **Geometry:** Borders should be sharp (`border-zinc-800`) with minimal rounding (max `rounded-md`).
 
-### FastAPI Conventions
-- Follow FastAPI best practices and conventions
-- Use Pydantic models for request/response validation
-- Separate route handlers from business logic
-- Use dependency injection for services and repositories
-- Document endpoints with OpenAPI annotations
+## Animations
+- **Framer Motion:** Use Framer Motion to create deterministic MAPOS simulations. 
+- **Syntax:** Ensure zero broken syntax in variants. Keep animations high-signal, low-noise to match the "Stripe Docs meets Elite CLI" aesthetic.
 
-### Data Layer Separation
-- Separate ORM models from schema/validation models
-- Use repository pattern to abstract data access
-- Keep business logic out of ORM models
-- Document migration expectations when schemas evolve
-- Use Alembic for database migrations
+## Backend & API Routing
+- **Route Handlers:** Use Next.js Route Handlers (`app/api/`) written in TypeScript. **DO NOT** use Python.
+- **Simulated Logic:** Do not write actual agent-routing logic; write UI components and API responses that *simulate* it for the VC showroom.
 
-### Service Layer
-- Keep services focused on business logic
-- Services should not depend on HTTP/API concerns
-- Use dependency injection to provide dependencies
-- Keep services testable and mockable
+## Database & Authentication
+- **Supabase:** Use Supabase for the database layer.
+- **Client Library:** Utilize `@supabase/ssr` for the waitlist, contact forms, and any required data persistence.
 
-## Frontend Rules (If Applicable)
-
-### React Standards
-- Use React functional components with hooks
-- Prefer hooks over class components
-- Keep components small and focused
-- Extract reusable logic into custom hooks
-
-### Component Organization
-- Keep UI pure; isolate business logic into hooks/services
-- Maintain a clean folder hierarchy:
-  ```
-  components/
-    ├── common/      # Reusable components
-    ├── features/    # Feature-specific components
-    └── layouts/     # Layout components
-  ```
-- Use TypeScript for type safety (if applicable)
-
-### State Management
-- Use React Context for global state (if simple)
-- Consider Redux/Zustand for complex state (if needed)
-- Keep state as local as possible
-- Avoid prop drilling
-
-## Data & Persistence
-
-### Data Models
-- Keep data models, schemas, and service layers cleanly separated
-- Use Pydantic for validation schemas
-- Use SQLAlchemy (or similar) for ORM models
-- Ensure consistent validation and transformation pipelines
-
-### Database Conventions
-- Use migrations for all schema changes
-- Never modify production schema directly
-- Test migrations on staging before production
-- Keep migrations small and focused
-- Document complex migrations
-
-### Caching Strategy
-- Use Redis for session management and caching
-- Cache expensive operations appropriately
-- Implement cache invalidation strategies
-- Document cache TTLs and invalidation logic
-
-## API Design
-
-- Follow RESTful conventions (see `docs/api-design.md`)
-- Use consistent naming (snake_case for JSON, kebab-case for URLs)
-- Version APIs appropriately
-- Document all endpoints with OpenAPI
-- Handle errors consistently
-
-## Error Handling
-
-- Use custom exception classes
-- Return appropriate HTTP status codes
-- Log errors with context (but not sensitive data)
-- Never expose internal errors to clients
-- Provide clear, actionable error messages
-
-## Performance
-
-- Optimize database queries (use indexes, avoid N+1 queries)
-- Use async/await for I/O-bound operations
-- Implement pagination for large datasets
-- Cache frequently accessed data
-- Monitor and profile performance-critical paths
-
+## Performance & Security
+- **Vercel Edge:** Maximize Vercel Edge Runtime for static and marketing pages to ensure <50ms TTFB for VC automated scrapers.
+- **Environment Variables:** All environment variables must be typed and validated.

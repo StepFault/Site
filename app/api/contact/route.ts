@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z, ZodError } from "zod";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import { sendContactNotification } from "@/lib/email";
+
+export const runtime = "nodejs";
 
 // ── Zod schema ────────────────────────────────────────────────────────────────
 // Mirrors the Python Pydantic ContactRequest schema exactly.
@@ -38,26 +40,6 @@ type ErrorBody = {
 };
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-
-/**
- * Admin Supabase client using the service-role key.
- * Bypasses RLS — safe here because this is a server-only Route Handler.
- * Created per-request; at serverless scale there is no persistent connection to pool.
- */
-function supabaseAdmin() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!url || !key) {
-    throw new Error(
-      "Missing Supabase env vars: NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY"
-    );
-  }
-
-  return createClient(url, key, {
-    auth: { persistSession: false },
-  });
-}
 
 function flattenZodError(
   err: ZodError
@@ -100,9 +82,8 @@ export async function POST(
   const { name, email, message }: ContactPayload = parsed.data;
 
   // 3 ── Persist to Supabase `contact_submissions`
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) {
+  const supabase = getSupabaseAdmin();
+  if (!supabase) {
     console.error("[contact] Missing Supabase env vars in this environment.");
     return NextResponse.json<ErrorBody>(
       {
@@ -113,7 +94,7 @@ export async function POST(
     );
   }
 
-  const { error: dbError } = await supabaseAdmin()
+  const { error: dbError } = await supabase
     .from("contact_submissions")
     .insert({ name, email, message });
 

@@ -51,12 +51,15 @@ export default function ContactForm() {
         setForm({ name: "", email: "", message: "" });
       } else {
         setStatus("error");
-        if (data.details) {
+        if (Array.isArray(data.details) && data.details.length > 0) {
           setErrors(data.details);
+        } else if (typeof data.error === "string") {
+          setErrors([{ field: "root", message: data.error }]);
         }
       }
     } catch {
       setStatus("error");
+      setErrors([{ field: "root", message: "Something went wrong. Please try again." }]);
     }
   };
 
@@ -137,11 +140,11 @@ export default function ContactForm() {
         )}
       </div>
 
-      {/* Error banner */}
-      {status === "error" && errors.length === 0 && (
+      {/* Error banner (root/server/network errors; field errors show inline) */}
+      {status === "error" && (errors.some((e) => e.field === "root") || errors.length === 0) && (
         <div className="rounded-md border border-red-400/30 bg-red-400/5 p-4">
           <p className="font-mono text-sm text-red-400">
-            Something went wrong. Please try again.
+            {errors.find((e) => e.field === "root")?.message ?? "Something went wrong. Please try again."}
           </p>
         </div>
       )}
