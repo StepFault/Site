@@ -1,20 +1,15 @@
-import type { MetadataRoute } from "next";
-
-const BASE_URL = "https://stepfault.ai";
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://stepfault.ai'; // Update if your domain is different
+
   return [
     {
-      url: BASE_URL,
+      url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1.0,
+      changeFrequency: 'daily',
+      priority: 1,
     },
-    {
-      url: `${BASE_URL}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
+    // Add other public routes here (e.g., /about, /contact)
   ];
 }
