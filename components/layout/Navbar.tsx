@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const NAV_LINKS = [
-  { label: "Initiatives", href: "#trust" },
   { label: "Deployments", href: "#deployments" },
-  { label: "Sandbox", href: "#access" },
+  { label: "Partners", href: "#trust" },
+  { label: "Demo", href: "#simulator" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export default function Navbar() {
@@ -27,8 +28,8 @@ export default function Navbar() {
         </Link>
 
         {/* Nav links */}
-        <ul className="flex items-center gap-6">
-          {NAV_LINKS.map(({ label, href }) => (
+        <ul className="flex items-center gap-5 sm:gap-6">
+          {NAV_LINKS.slice(0, -1).map(({ label, href }) => (
             <li key={label}>
               <a
                 href={href}
@@ -38,6 +39,14 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href={NAV_LINKS[NAV_LINKS.length - 1].href}
+              className="rounded-md border border-zinc-700 bg-zinc-900 px-4 py-1.5 font-mono text-xs tracking-widest text-zinc-200 transition-colors hover:border-emerald-500/50 hover:bg-zinc-800 hover:text-emerald-400"
+            >
+              {NAV_LINKS[NAV_LINKS.length - 1].label}
+            </a>
+          </li>
         </ul>
       </nav>
     </motion.header>

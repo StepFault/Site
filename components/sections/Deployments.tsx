@@ -23,16 +23,21 @@ type Project = {
 
 const STATUS_STYLES: Record<string, string> = {
   deployed: "text-emerald-400 border-emerald-400/30 bg-emerald-400/5",
+  testing: "text-amber-400 border-amber-400/30 bg-amber-400/5",
+  "testing-deployed": "text-amber-400/90 border-amber-400/20 bg-emerald-400/5 border-emerald-400/20",
   roadmap: "text-zinc-400 border-zinc-700 bg-zinc-800/50",
 };
 
 const STATUS_LABELS: Record<string, string> = {
   deployed: "DEPLOYED",
+  testing: "TESTING",
+  "testing-deployed": "TESTING · DEPLOYED",
   roadmap: "ROADMAP",
 };
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const isRoadmap = project.status === "roadmap";
+  const isWide = project.colSpan === 2;
 
   return (
     <motion.div
@@ -45,7 +50,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         "bg-zinc-900/50 border-zinc-800",
         "transition-all duration-300",
         "hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(52,211,153,0.1)]",
-        isRoadmap ? "md:col-span-2" : "col-span-1",
+        isWide ? "md:col-span-2" : "col-span-1",
       ]
         .filter(Boolean)
         .join(" ")}
@@ -159,9 +164,18 @@ export default function Deployments() {
             From Lab to Production
           </p>
         </div>
-        <span className="hidden font-mono text-xs text-zinc-700 sm:block">
-          {projects.filter((p) => p.status === "deployed").length} active /{" "}
-          {projects.filter((p) => p.status === "roadmap").length} upcoming
+        <span className="font-mono text-xs text-zinc-700">
+          02 / 03
+          <span className="hidden sm:inline">
+            {" "}
+            · {projects.filter((p) => p.status === "deployed").length} deployed
+            {projects.some((p) => p.status === "testing" || p.status === "testing-deployed") && (
+              <> · {projects.filter((p) => p.status === "testing" || p.status === "testing-deployed").length} testing</>
+            )}
+            {projects.some((p) => p.status === "roadmap") && (
+              <> · {projects.filter((p) => p.status === "roadmap").length} upcoming</>
+            )}
+          </span>
         </span>
       </motion.div>
 

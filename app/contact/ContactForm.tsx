@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 interface FormState {
@@ -65,15 +66,25 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-md border border-emerald-400/30 bg-emerald-400/5 p-6 text-center">
+      <div className="rounded-md border border-emerald-400/30 bg-emerald-400/5 p-8 text-center">
         <p className="font-mono text-emerald-400">Message sent successfully.</p>
         <p className="mt-2 text-sm text-zinc-500">We&apos;ll be in touch soon.</p>
-        <button
-          onClick={() => setStatus("idle")}
-          className="mt-4 font-mono text-sm text-zinc-400 hover:text-zinc-200"
-        >
-          Send another message
-        </button>
+        <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 rounded-md border border-zinc-700 bg-zinc-900 px-5 py-2.5 font-mono text-sm text-zinc-200 transition-colors hover:border-emerald-500/50 hover:bg-zinc-800 hover:text-emerald-400"
+          >
+            <span aria-hidden>←</span>
+            Back to home
+          </Link>
+          <button
+            type="button"
+            onClick={() => setStatus("idle")}
+            className="font-mono text-sm text-zinc-500 underline decoration-zinc-600 underline-offset-2 transition-colors hover:text-zinc-200 hover:decoration-zinc-500"
+          >
+            Send another message
+          </button>
+        </div>
       </div>
     );
   }

@@ -76,11 +76,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── 02 · TRUST SIGNALS ─────────────────────────────────────────────── */}
-        <SectionDivider label="// partners & infrastructure" />
-        <TrustSignals />
-
-        {/* ── 03 · SIMULATOR ─────────────────────────────────────────────────── */}
+        {/* ── 02 · DEMO (live simulation first) ──────────────────────────────── */}
         <SectionDivider label="// live simulation" />
 
         <section
@@ -96,11 +92,15 @@ export default function HomePage() {
           <MaposSimulator />
         </section>
 
-        {/* ── 04 · DEPLOYMENTS ───────────────────────────────────────────────── */}
+        {/* ── 03 · APPLIED RESEARCH & DEPLOYMENTS ─────────────────────────────── */}
         <SectionDivider label="// applied research & deployments" />
         <Deployments />
 
-        {/* ── 05 · ACCESS GATE ───────────────────────────────────────────────── */}
+        {/* ── 04 · PARTNERS & INFRASTRUCTURE ───────────────────────────────────── */}
+        <SectionDivider label="// partners & infrastructure" />
+        <TrustSignals />
+
+        {/* ── 05 · ACCESS GATE (next step) ────────────────────────────────────── */}
         <SectionDivider label="// request access" />
 
         <section

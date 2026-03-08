@@ -33,7 +33,7 @@
         { "label": "Data points processed/day", "value": "50M+" },
         { "label": "Model accuracy", "value": "94.7%" }
       ],
-      "year": 2023,
+      "year": 2016,
       "colSpan": 1
     },
     {
@@ -93,37 +93,47 @@
   ],
   "partners": {
     "academic": [
-      { "id": "mit", "name": "MIT", "logo": "/logos/mit.svg" },
-      { "id": "stanford", "name": "Stanford", "logo": "/logos/stanford.svg" },
-      { "id": "ucla", "name": "UCLA", "logo": "/logos/ucla.svg" },
-      { "id": "berkeley", "name": "Berkeley", "logo": "/logos/berkeley.svg" },
-      { "id": "osu", "name": "OSU", "logo": "/logos/osu.svg" },
-      { "id": "jhu", "name": "Johns Hopkins", "logo": "/logos/jhu.svg" }
+      { "id": "mit", "name": "MIT", "logo": "/logos/mit.svg", "url": "https://www.mit.edu" },
+      { "id": "stanford", "name": "Stanford", "logo": "/logos/stanford.svg", "url": "https://www.stanford.edu" },
+      { "id": "ucla", "name": "UCLA", "logo": "/logos/ucla.svg", "url": "https://www.ucla.edu" },
+      { "id": "berkeley", "name": "Berkeley", "logo": "/logos/berkeley.svg", "url": "https://www.berkeley.edu" },
+      { "id": "osu", "name": "OSU", "logo": "/logos/osu.svg", "url": "https://www.osu.edu" },
+      { "id": "jhu", "name": "Johns Hopkins", "logo": "/logos/jhu.svg", "url": "https://www.jhu.edu" }
     ],
     "infrastructure": {
       "application": [
-        { "id": "nextjs", "name": "Next.js", "logo": "/logos/nextjs.svg" },
-        { "id": "react", "name": "React", "logo": "/logos/react.svg" },
-        { "id": "typescript", "name": "TypeScript", "logo": "/logos/typescript.svg" },
-        { "id": "tailwind", "name": "Tailwind CSS", "logo": "/logos/tailwind.svg" },
-        { "id": "vercel", "name": "Vercel", "logo": "/logos/vercel.svg" },
-        { "id": "supabase", "name": "Supabase", "logo": "/logos/supabase.svg" },
-        { "id": "zod", "name": "Zod", "logo": "/logos/zod.svg" },
-        { "id": "framer", "name": "Framer Motion", "logo": "/logos/framer.svg" }
+        { "id": "nextjs", "name": "Next.js", "logo": "/logos/nextjs.svg", "url": "https://nextjs.org" },
+        { "id": "react", "name": "React", "logo": "/logos/react.svg", "url": "https://react.dev" },
+        { "id": "typescript", "name": "TypeScript", "logo": "/logos/typescript.svg", "url": "https://www.typescriptlang.org" },
+        { "id": "tailwind", "name": "Tailwind CSS", "logo": "/logos/tailwind.svg", "url": "https://tailwindcss.com" },
+        { "id": "vercel", "name": "Vercel", "logo": "/logos/vercel.svg", "url": "https://vercel.com" },
+        { "id": "supabase", "name": "Supabase", "logo": "/logos/supabase.svg", "url": "https://supabase.com" },
+        { "id": "zod", "name": "Zod", "logo": "/logos/zod.svg", "url": "https://zod.dev" },
+        { "id": "framer", "name": "Framer Motion", "logo": "/logos/framer.svg", "url": "https://www.framer.com/motion" },
+        { "id": "nodejs", "name": "Node.js", "logo": "/logos/nodejs.svg", "url": "https://nodejs.org" },
+        { "id": "postgresql", "name": "PostgreSQL", "logo": "/logos/postgresql.svg", "url": "https://www.postgresql.org" },
+        { "id": "docker", "name": "Docker", "logo": "/logos/docker.svg", "url": "https://www.docker.com" },
+        { "id": "github", "name": "GitHub", "logo": "/logos/github.svg", "url": "https://github.com" }
       ],
       "ai": [
-        { "id": "openai", "name": "OpenAI", "logo": "/logos/openai.svg" },
-        { "id": "langchain", "name": "LangChain", "logo": "/logos/langchain.svg" },
-        { "id": "huggingface", "name": "Hugging Face", "logo": "/logos/huggingface.svg" },
-        { "id": "pytorch", "name": "PyTorch", "logo": "/logos/pytorch.svg" },
-        { "id": "tensorflow", "name": "TensorFlow", "logo": "/logos/tensorflow.svg" },
-        { "id": "anthropic", "name": "Anthropic", "logo": "/logos/anthropic.svg" }
+        { "id": "openai", "name": "OpenAI", "logo": "/logos/openai.svg", "url": "https://openai.com" },
+        { "id": "langchain", "name": "LangChain", "logo": "/logos/langchain.svg", "url": "https://www.langchain.com" },
+        { "id": "huggingface", "name": "Hugging Face", "logo": "/logos/huggingface.svg", "url": "https://huggingface.co" },
+        { "id": "pytorch", "name": "PyTorch", "logo": "/logos/pytorch.svg", "url": "https://pytorch.org" },
+        { "id": "tensorflow", "name": "TensorFlow", "logo": "/logos/tensorflow.svg", "url": "https://www.tensorflow.org" },
+        { "id": "anthropic", "name": "Anthropic", "logo": "/logos/anthropic.svg", "url": "https://www.anthropic.com" },
+        { "id": "jax", "name": "JAX", "logo": "/logos/jax.svg", "url": "https://github.com/google/jax" },
+        { "id": "onnx", "name": "ONNX", "logo": "/logos/onnx.svg", "url": "https://onnx.ai" },
+        { "id": "weights-biases", "name": "Weights & Biases", "logo": "/logos/weights-biases.svg", "url": "https://wandb.ai" },
+        { "id": "mlflow", "name": "MLflow", "logo": "/logos/mlflow.svg", "url": "https://mlflow.org" }
       ],
       "quantum": [
-        { "id": "qiskit", "name": "Qiskit", "logo": "/logos/qiskit.svg" },
-        { "id": "cirq", "name": "Cirq", "logo": "/logos/cirq.svg" },
-        { "id": "ibm-quantum", "name": "IBM Quantum", "logo": "/logos/ibm-quantum.svg" },
-        { "id": "pennylane", "name": "PennyLane", "logo": "/logos/pennylane.svg" }
+        { "id": "qiskit", "name": "Qiskit", "logo": "/logos/qiskit.svg", "url": "https://qiskit.org" },
+        { "id": "cirq", "name": "Cirq", "logo": "/logos/cirq.svg", "url": "https://quantumai.google/cirq" },
+        { "id": "ibm-quantum", "name": "IBM Quantum", "logo": "/logos/ibm-quantum.svg", "url": "https://quantum.ibm.com" },
+        { "id": "pennylane", "name": "PennyLane", "logo": "/logos/pennylane.svg", "url": "https://pennylane.ai" },
+        { "id": "amazon-braket", "name": "Amazon Braket", "logo": "/logos/amazon-braket.svg", "url": "https://aws.amazon.com/braket" },
+        { "id": "google-quantum", "name": "Google Quantum", "logo": "/logos/google-quantum.svg", "url": "https://quantumai.google" }
       ]
     }
   }
