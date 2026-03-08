@@ -275,7 +275,7 @@ export default function MaposSimulator() {
         </div>
 
         {/* Terminal content (scrollable for multi-sector run) */}
-        <div className="min-h-[420px] max-h-[560px] overflow-y-auto p-4 font-mono text-sm leading-relaxed">
+        <div className="simulator-scroll min-h-[420px] max-h-[560px] overflow-y-auto p-4 font-mono text-sm leading-relaxed">
           <AnimatePresence initial={false}>
             {lines.map((line, index) => (
               <motion.div

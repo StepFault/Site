@@ -15,3 +15,22 @@
     @apply bg-black text-zinc-200 antialiased;
   }
 }
+
+/* Live simulation terminal scrollbar: zinc track/thumb, emerald hover */
+.simulator-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(82 82 91) rgb(24 24 27);
+}
+.simulator-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.simulator-scroll::-webkit-scrollbar-track {
+  background: rgb(24 24 27);
+}
+.simulator-scroll::-webkit-scrollbar-thumb {
+  background: rgb(82 82 91);
+  border-radius: 9999px;
+}
+.simulator-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgb(52 211 153 / 0.4);
+}
