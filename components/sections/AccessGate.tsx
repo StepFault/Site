@@ -79,7 +79,7 @@ export default function AccessGate() {
 
   // Runs through the two loading phases sequentially, then resolves once all
   // phases complete. This gives the UI something to animate while the fetch
-  // is in-flight — and ensures the sequence always plays in full.
+  // is in-flight and ensures the sequence always plays in full.
   const runLoadingSequence = (): Promise<void> => {
     return new Promise((resolve) => {
       let i = 0;
@@ -158,7 +158,7 @@ export default function AccessGate() {
             <span className="text-zinc-200">24–48 hours</span>.
           </p>
           <p className="mt-4 text-zinc-600">
-            — Stepfault MAPOS Access Control
+            Stepfault MAPOS Access Control
           </p>
         </div>
       </motion.div>
@@ -174,7 +174,7 @@ export default function AccessGate() {
         <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
         <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
         <span className="ml-3 font-mono text-xs text-zinc-500">
-          mapos-access-control — request sandbox
+          mapos-access-control, request sandbox
         </span>
       </div>
 

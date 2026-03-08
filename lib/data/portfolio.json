@@ -5,15 +5,15 @@
       "slug": "realverdict-ai",
       "name": "RealVerdict AI",
       "tagline": "Deterministic legal reasoning at machine speed.",
-      "description": "Multi-agent orchestration system that synthesizes case law, statutory text, and precedent vectors to produce structured legal opinions. Built for high-stakes litigation support with full audit trails and human-in-the-loop verification at every inference step.",
+      "description": "Multi-agent orchestration system that synthesizes case law, statutory text, and precedent vectors to produce structured legal opinions. Initially focused on select practice areas; built for high-stakes litigation support with full audit trails and human-in-the-loop verification at every inference step.",
       "domain": "Legal Intelligence",
-      "status": "deployed",
+      "status": "testing-deployed",
       "image": "/projects/realverdict.svg",
       "tags": ["LLM Orchestration", "RAG", "Legal AI", "HITL"],
       "metrics": [
-        { "label": "Case citations processed", "value": "2.4M+" },
-        { "label": "Hallucination rate", "value": "< 0.3%" },
-        { "label": "Avg. latency", "value": "1.8s" }
+        { "label": "Practice areas (pilot)", "value": "3" },
+        { "label": "Citations in pilot corpus", "value": "42K+" },
+        { "label": "Hallucination rate", "value": "< 0.4%" }
       ],
       "year": 2024,
       "colSpan": 1
@@ -55,19 +55,37 @@
       "colSpan": 1
     },
     {
-      "id": "fas",
-      "slug": "fas",
-      "name": "FAS",
-      "tagline": "Fault-tolerant advisory systems for financial infrastructure.",
-      "description": "Financial Advisory System leveraging consensus-driven multi-agent pipelines to generate market analysis, risk assessments, and regulatory compliance summaries. Designed for institutional-grade reliability with deterministic output guarantees.",
-      "domain": "Financial Advisory",
-      "status": "deployed",
-      "image": "/projects/fas.svg",
-      "tags": ["Risk Modeling", "Compliance AI", "Multi-Agent", "Deterministic"],
+      "id": "civiccode",
+      "slug": "civiccode",
+      "name": "CivicCode",
+      "tagline": "Municipal ordinance intelligence across cities.",
+      "description": "Deterministic AI system that ingests and reasons over municipal codes, zoning ordinances, and local regulations. Rolling out in a focused set of jurisdictions first; delivers citation-grounded answers for permits, compliance, and cross-city policy comparison with full audit trails and human-in-the-loop verification for government and legal teams.",
+      "domain": "Municipal Law",
+      "status": "testing-deployed",
+      "image": "/projects/municipal.svg",
+      "tags": ["Ordinance RAG", "Multi-Jurisdiction", "Legal AI", "HITL"],
       "metrics": [
-        { "label": "Reports generated/month", "value": "12K+" },
-        { "label": "Regulatory frameworks", "value": "14" },
-        { "label": "Uptime SLA", "value": "99.99%" }
+        { "label": "Jurisdictions (pilot)", "value": "14" },
+        { "label": "Ordinance sections indexed", "value": "92K+" },
+        { "label": "Citation accuracy", "value": "99.0%" }
+      ],
+      "year": 2024,
+      "colSpan": 1
+    },
+    {
+      "id": "dispute-bridge",
+      "slug": "dispute-bridge",
+      "name": "DisputeBridge",
+      "tagline": "End-to-end platform dispute resolution, from milestones to arbitration.",
+      "description": "Deterministic AI system for freelance and platform disputes: tracks project milestones, payment flows, and platform Terms of Service compliance; supports structured mediation and arbitration workflows with evidence bundling and citation to ToS and contract terms. In limited rollout; outputs are audit-ready and feed into legal follow-up (demand letters, small claims, or counsel handoff) with full chain-of-custody for evidence.",
+      "domain": "Platform Disputes",
+      "status": "testing-deployed",
+      "image": "/projects/dispute-bridge.svg",
+      "tags": ["Milestones", "Payments", "ToS", "Mediation", "Legal AI", "HITL"],
+      "metrics": [
+        { "label": "Disputes in pilot", "value": "380+" },
+        { "label": "Mediation success rate", "value": "74%" },
+        { "label": "ToS citation accuracy", "value": "99.0%" }
       ],
       "year": 2024,
       "colSpan": 1
@@ -76,8 +94,8 @@
       "id": "quantum-ai-orchestration",
       "slug": "quantum-ai-orchestration",
       "name": "Quantum-Assisted AI Orchestration",
-      "tagline": "The next frontier — probabilistic reasoning at quantum scale.",
-      "description": "A research initiative exploring quantum annealing and variational quantum circuits as optimization layers within multi-agent AI pipelines. Target applications span legal discovery, medical differential diagnosis, and real-time crisis management — domains where classical compute reaches its ceiling.",
+      "tagline": "The next frontier: probabilistic reasoning at quantum scale.",
+      "description": "A research initiative exploring quantum annealing and variational quantum circuits as optimization layers within multi-agent AI pipelines. Target applications span legal discovery, medical differential diagnosis, and real-time crisis management in domains where classical compute reaches its ceiling.",
       "domain": "Applied Research Horizon",
       "status": "roadmap",
       "image": null,

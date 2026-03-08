@@ -29,7 +29,7 @@ export async function createClient() {
 
 /**
  * Elevated server client using the service-role key.
- * Bypasses RLS — use only in trusted server contexts (migrations, admin routes).
+ * Bypasses RLS; use only in trusted server contexts (migrations, admin routes).
  */
 export function createServiceClient() {
   return createServerClient(

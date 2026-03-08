@@ -3,7 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import ContactForm from "./ContactForm";
 
 export const metadata = {
-  title: "Contact — Stepfault",
+  title: "Contact | Stepfault",
   description: "Get in touch with the Stepfault team.",
 };
 
@@ -13,7 +13,7 @@ export default function ContactPage() {
       <Navbar />
       <main className="min-h-screen bg-black text-zinc-200 antialiased">
         <div className="mx-auto max-w-2xl px-6 pt-28 pb-24">
-          {/* Back to home — visible on both form and success */}
+          {/* Back to home (visible on both form and success) */}
           <Link
             href="/"
             className="mb-8 inline-flex items-center gap-2 font-mono text-sm text-zinc-500 transition-colors hover:text-emerald-400"

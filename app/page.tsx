@@ -45,7 +45,7 @@ export default function HomePage() {
           {/* Sub-headline */}
           <p className="max-w-lg text-base text-zinc-500 sm:text-lg">
             We design and deploy deterministic AI systems for domains where
-            failure is not an option — law, medicine, cybersecurity, and finance.
+            failure is not an option in law, medicine, cybersecurity, and finance.
           </p>
 
           {/* Metadata strip */}
@@ -85,7 +85,7 @@ export default function HomePage() {
         >
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-              MAPOS Runtime — Interactive Demonstration
+              MAPOS Runtime: Interactive Demonstration
             </h2>
             <span className="font-mono text-xs text-zinc-700">01 / 03</span>
           </div>
@@ -109,7 +109,7 @@ export default function HomePage() {
         >
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-              Sandbox Access — Limited Preview
+              Sandbox Access: Limited Preview
             </h2>
             <span className="font-mono text-xs text-zinc-700">03 / 03</span>
           </div>

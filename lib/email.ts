@@ -26,7 +26,7 @@ function createZohoTransport() {
 
 /**
  * Sends an internal notification email to NOTIFICATION_EMAIL when a contact
- * form is submitted. Throws if the transport fails — callers decide whether
+ * form is submitted. Throws if the transport fails; callers decide whether
  * to surface the error or swallow it.
  */
 export async function sendContactNotification(

@@ -16,15 +16,15 @@ const config: Config = {
       },
       // Semantic design-system aliases that map to the strict Zinc/Emerald palette.
       // All raw palette tokens (zinc-*, emerald-*, blue-*) remain available via
-      // Tailwind's defaults — these aliases exist only for semantic shorthand.
+      // Tailwind's defaults; these aliases exist only for semantic shorthand.
       colors: {
         background: {
-          DEFAULT: "rgb(9 9 11)",    // zinc-950  — primary canvas
-          surface: "rgb(24 24 27)", // zinc-900  — card / panel surfaces
+          DEFAULT: "rgb(9 9 11)",    // zinc-950, primary canvas
+          surface: "rgb(24 24 27)", // zinc-900, card/panel surfaces
         },
         border: {
-          DEFAULT: "rgb(39 39 42)", // zinc-800  — sharp geometric borders
-          subtle: "rgb(63 63 70)",  // zinc-700  — secondary dividers
+          DEFAULT: "rgb(39 39 42)", // zinc-800, sharp geometric borders
+          subtle: "rgb(63 63 70)",  // zinc-700, secondary dividers
         },
         text: {
           primary: "rgb(228 228 231)",  // zinc-200
@@ -32,8 +32,8 @@ const config: Config = {
           muted: "rgb(82 82 91)",        // zinc-600
         },
         accent: {
-          DEFAULT: "rgb(52 211 153)",  // emerald-400 — live status, terminal output
-          alt: "rgb(96 165 250)",      // blue-400    — alternate accent
+          DEFAULT: "rgb(52 211 153)",  // emerald-400, live status, terminal output
+          alt: "rgb(96 165 250)",      // blue-400, alternate accent
         },
       },
       borderRadius: {

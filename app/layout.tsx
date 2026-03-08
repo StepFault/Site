@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Stepfault | Deterministic AI for High-Stakes Domains",
   description:
-    "MAPOS orchestrates multi-agent systems with provable guarantees. No hallucinations, no guesswork—deterministic outcomes for compliance, legal, and risk-sensitive workflows.",
+    "MAPOS orchestrates multi-agent systems with provable guarantees. No hallucinations, no guesswork. Deterministic outcomes for compliance, legal, and risk-sensitive workflows.",
 };
 
 export default function RootLayout({
