@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, type Variants } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import portfolioData from "@/lib/data/portfolio.json";
 
@@ -135,7 +136,7 @@ function InfrastructureScrollRow({
           disabled={!canScrollLeft}
           onClick={() => scroll("left")}
         >
-          <span aria-hidden>‹</span>
+          <ChevronLeft className="h-4 w-4" strokeWidth={2} aria-hidden />
         </button>
         <div
           ref={scrollRef}
@@ -187,7 +188,7 @@ function InfrastructureScrollRow({
           disabled={!canScrollRight}
           onClick={() => scroll("right")}
         >
-          <span aria-hidden>›</span>
+          <ChevronRight className="h-4 w-4" strokeWidth={2} aria-hidden />
         </button>
       </div>
     </div>

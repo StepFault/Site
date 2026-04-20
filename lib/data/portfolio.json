@@ -1,112 +1,36 @@
 {
   "projects": [
     {
-      "id": "realverdict-ai",
-      "slug": "realverdict-ai",
-      "name": "RealVerdict AI",
-      "tagline": "Deterministic legal reasoning at machine speed.",
-      "description": "Multi-agent orchestration system that synthesizes case law, statutory text, and precedent vectors to produce structured legal opinions. Initially focused on select practice areas; built for high-stakes litigation support with full audit trails and human-in-the-loop verification at every inference step.",
-      "domain": "Legal Intelligence",
-      "status": "testing-deployed",
+      "id": "cross-border-fintech-compliance",
+      "slug": "cross-border-fintech-compliance",
+      "name": "Cross-Border Fintech & Legal Compliance",
+      "domain": "Executive case study",
+      "scale": "Institution required a single operating model for cross-border product and treasury flows where national accounting (SYSCOHADA) and international reporting (IFRS) could not drift—with boards, regulators, and investors demanding reconcilable truth in near real time.",
+      "solution": "Rearchitected Next.js/PostgreSQL infrastructure enforcing strict SYSCOHADA accounting standards and IFRS bridging using Human-In-The-Loop AI agents, so policy, bookings, and disclosures stay aligned end-to-end with deterministic review gates before any outward-facing numbers ship.",
+      "status": "case-study",
       "image": "/projects/realverdict.svg",
-      "tags": ["LLM Orchestration", "RAG", "Legal AI", "HITL"],
       "metrics": [
-        { "label": "Practice areas (pilot)", "value": "3" },
-        { "label": "Citations in pilot corpus", "value": "42K+" },
-        { "label": "Hallucination rate", "value": "< 0.4%" }
+        { "label": "Problem surface", "value": "Cross-border · multi-entity" },
+        { "label": "Assurance posture", "value": "HITL · audit chain" },
+        { "label": "Standards bridge", "value": "SYSCOHADA ↔ IFRS" }
       ],
-      "year": 2024,
-      "colSpan": 1
+      "year": 2024
     },
     {
-      "id": "cronometer",
-      "slug": "cronometer",
-      "name": "Cronometer",
-      "tagline": "Precision nutrition intelligence for clinical outcomes.",
-      "description": "AI-powered health data platform integrating dietary logs, biomarker panels, and wearable telemetry into a unified inference engine. Powers personalized intervention recommendations with clinical-grade traceability and privacy-preserving federated learning.",
-      "domain": "Health Data Platform",
-      "status": "deployed",
-      "image": "/projects/cronometer.svg",
-      "tags": ["Federated Learning", "Biomarkers", "Clinical AI", "Privacy"],
-      "metrics": [
-        { "label": "Daily active users", "value": "180K+" },
-        { "label": "Data points processed/day", "value": "50M+" },
-        { "label": "Model accuracy", "value": "94.7%" }
-      ],
-      "year": 2016,
-      "colSpan": 1
-    },
-    {
-      "id": "adlumin",
-      "slug": "adlumin",
-      "name": "Adlumin",
-      "tagline": "Autonomous threat detection and incident orchestration.",
-      "description": "Cybersecurity operations platform combining real-time log correlation, behavioral anomaly detection, and automated playbook execution. Reduces mean-time-to-detect from hours to seconds across distributed enterprise environments.",
-      "domain": "Cybersecurity Ops",
-      "status": "deployed",
-      "image": "/projects/adlumin.svg",
-      "tags": ["Anomaly Detection", "SIEM", "Automated Response", "Zero-Trust"],
-      "metrics": [
-        { "label": "Events correlated/sec", "value": "1.2M" },
-        { "label": "MTTD reduction", "value": "97%" },
-        { "label": "False positive rate", "value": "0.04%" }
-      ],
-      "year": 2023,
-      "colSpan": 1
-    },
-    {
-      "id": "civiccode",
-      "slug": "civiccode",
-      "name": "CivicCode",
-      "tagline": "Municipal ordinance intelligence across cities.",
-      "description": "Deterministic AI system that ingests and reasons over municipal codes, zoning ordinances, and local regulations. Rolling out in a focused set of jurisdictions first; delivers citation-grounded answers for permits, compliance, and cross-city policy comparison with full audit trails and human-in-the-loop verification for government and legal teams.",
-      "domain": "Municipal Law",
-      "status": "testing-deployed",
+      "id": "institutional-social-impact",
+      "slug": "institutional-social-impact",
+      "name": "Institutional Social Impact at Scale",
+      "domain": "Executive case study",
+      "scale": "Programs spanning housing stability, clinical access, and household financial health—where field operations, data agreements, and funder governance had to interoperate without degrading outcomes for vulnerable populations.",
+      "solution": "Led Google.org-funded initiatives integrating complex systems for housing, medical, and financial infrastructure, aligning delivery partners, data contracts, and measurement so capital translated into durable access—not one-off pilots.",
+      "status": "case-study",
       "image": "/projects/municipal.svg",
-      "tags": ["Ordinance RAG", "Multi-Jurisdiction", "Legal AI", "HITL"],
       "metrics": [
-        { "label": "Jurisdictions (pilot)", "value": "14" },
-        { "label": "Ordinance sections indexed", "value": "92K+" },
-        { "label": "Citation accuracy", "value": "99.0%" }
+        { "label": "Institutional sponsor", "value": "Google.org" },
+        { "label": "Systems integrated", "value": "Housing · Medical · Finance" },
+        { "label": "Delivery mode", "value": "Field + platform" }
       ],
-      "year": 2024,
-      "colSpan": 1
-    },
-    {
-      "id": "dispute-bridge",
-      "slug": "dispute-bridge",
-      "name": "DisputeBridge",
-      "tagline": "End-to-end platform dispute resolution, from milestones to arbitration.",
-      "description": "Deterministic AI system for freelance and platform disputes: tracks project milestones, payment flows, and platform Terms of Service compliance; supports structured mediation and arbitration workflows with evidence bundling and citation to ToS and contract terms. In limited rollout; outputs are audit-ready and feed into legal follow-up (demand letters, small claims, or counsel handoff) with full chain-of-custody for evidence.",
-      "domain": "Platform Disputes",
-      "status": "testing-deployed",
-      "image": "/projects/dispute-bridge.svg",
-      "tags": ["Milestones", "Payments", "ToS", "Mediation", "Legal AI", "HITL"],
-      "metrics": [
-        { "label": "Disputes in pilot", "value": "380+" },
-        { "label": "Mediation success rate", "value": "74%" },
-        { "label": "ToS citation accuracy", "value": "99.0%" }
-      ],
-      "year": 2024,
-      "colSpan": 1
-    },
-    {
-      "id": "quantum-ai-orchestration",
-      "slug": "quantum-ai-orchestration",
-      "name": "Quantum-Assisted AI Orchestration",
-      "tagline": "The next frontier: probabilistic reasoning at quantum scale.",
-      "description": "A research initiative exploring quantum annealing and variational quantum circuits as optimization layers within multi-agent AI pipelines. Target applications span legal discovery, medical differential diagnosis, and real-time crisis management in domains where classical compute reaches its ceiling.",
-      "domain": "Applied Research Horizon",
-      "status": "roadmap",
-      "image": null,
-      "tags": ["Quantum Computing", "VQC", "Crisis Management", "Medical AI", "Legal AI"],
-      "metrics": [
-        { "label": "Target domains", "value": "Law · Med · Crisis" },
-        { "label": "Research stage", "value": "Pre-Alpha" },
-        { "label": "ETA", "value": "2026 Q4" }
-      ],
-      "year": 2026,
-      "colSpan": 2
+      "year": 2023
     }
   ],
   "partners": {

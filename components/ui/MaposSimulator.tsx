@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { Pause, Play, RotateCcw, Terminal } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 
 type LogType =
@@ -269,8 +270,13 @@ export default function MaposSimulator() {
           <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
           <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
           <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
-          <span className="ml-3 font-mono text-xs text-zinc-500">
-            mapos-runtime, deterministic simulation
+          <Terminal
+            className="ml-3 h-3.5 w-3.5 shrink-0 text-zinc-600"
+            strokeWidth={2}
+            aria-hidden
+          />
+          <span className="font-mono text-xs text-zinc-500">
+            mapos-runtime · deterministic trace (UI-only)
           </span>
         </div>
 
@@ -304,9 +310,10 @@ export default function MaposSimulator() {
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-amber-400"
+              className="inline-flex items-center gap-1.5 text-amber-400"
             >
-              ⏸ Processing...
+              <Pause className="h-3.5 w-3.5 shrink-0" strokeWidth={2} aria-hidden />
+              Awaiting verification gate...
             </motion.span>
           )}
         </div>
@@ -334,18 +341,22 @@ export default function MaposSimulator() {
 
           <div className="flex gap-2">
             <button
+              type="button"
               onClick={resetSimulation}
               disabled={!isRunning && lines.length === 0}
-              className="rounded border border-zinc-800 bg-zinc-900 px-3 py-1.5 font-mono text-xs text-zinc-400 transition-colors hover:border-zinc-700 hover:text-zinc-200 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-1.5 rounded border border-zinc-800 bg-zinc-900 px-3 py-1.5 font-mono text-xs text-zinc-400 transition-colors hover:border-zinc-700 hover:text-zinc-200 disabled:cursor-not-allowed disabled:opacity-40"
             >
+              <RotateCcw className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
               Reset
             </button>
             <button
+              type="button"
               onClick={startSimulation}
               disabled={isRunning}
-              className="rounded bg-emerald-400 px-3 py-1.5 font-mono text-xs text-black transition-colors hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-1.5 rounded bg-emerald-400 px-3 py-1.5 font-mono text-xs text-black transition-colors hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-40"
             >
-              Run Simulation
+              <Play className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
+              Run trace
             </button>
           </div>
         </div>

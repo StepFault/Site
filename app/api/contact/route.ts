@@ -1,32 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { z, ZodError } from "zod";
+import { ZodError } from "zod";
 import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import { sendContactNotification } from "@/lib/email";
+import {
+  ContactIntakeSchema,
+  type ContactIntakePayload,
+} from "@/lib/validation/contact-intake";
 
 export const runtime = "nodejs";
-
-// ── Zod schema ────────────────────────────────────────────────────────────────
-// Mirrors the Python Pydantic ContactRequest schema exactly.
-
-const ContactSchema = z.object({
-  name: z
-    .string({ error: "Name is required." })
-    .trim()
-    .min(1, "Name is required.")
-    .max(100, "Name must be 100 characters or less."),
-  email: z
-    .string({ error: "Email is required." })
-    .email("Invalid email address."),
-  message: z
-    .string({ error: "Message is required." })
-    .trim()
-    .min(10, "Message must be at least 10 characters.")
-    .max(2000, "Message must be 2000 characters or less."),
-});
-
-type ContactPayload = z.infer<typeof ContactSchema>;
-
-// ── Typed response bodies ─────────────────────────────────────────────────────
 
 type SuccessBody = {
   success: true;
@@ -39,8 +20,6 @@ type ErrorBody = {
   details?: { field: string; message: string }[];
 };
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
 function flattenZodError(
   err: ZodError
 ): { field: string; message: string }[] {
@@ -50,12 +29,9 @@ function flattenZodError(
   }));
 }
 
-// ── POST /api/contact ─────────────────────────────────────────────────────────
-
 export async function POST(
   req: NextRequest
 ): Promise<NextResponse<SuccessBody | ErrorBody>> {
-  // 1 ── Parse JSON body
   let raw: unknown;
   try {
     raw = await req.json();
@@ -66,8 +42,7 @@ export async function POST(
     );
   }
 
-  // 2 ── Validate with Zod
-  const parsed = ContactSchema.safeParse(raw);
+  const parsed = ContactIntakeSchema.safeParse(raw);
   if (!parsed.success) {
     return NextResponse.json<ErrorBody>(
       {
@@ -79,24 +54,33 @@ export async function POST(
     );
   }
 
-  const { name, email, message }: ContactPayload = parsed.data;
+  const data: ContactIntakePayload = parsed.data;
 
-  // 3 ── Persist to Supabase `contact_submissions`
   const supabase = getSupabaseAdmin();
   if (!supabase) {
     console.error("[contact] Missing Supabase env vars in this environment.");
     return NextResponse.json<ErrorBody>(
       {
         success: false,
-        error: "Contact service is temporarily unavailable. Please try again later.",
+        error:
+          "Contact service is temporarily unavailable. Please try again later.",
       },
       { status: 503 }
     );
   }
 
+  const row = {
+    name: data.executiveName,
+    email: data.corporateEmail,
+    message: data.immediateTechnicalHurdle,
+    company: data.company,
+    funding_stage: data.fundingStage,
+    budget_range: data.engagementBudgetRange,
+  };
+
   const { error: dbError } = await supabase
     .from("contact_submissions")
-    .insert({ name, email, message });
+    .insert(row);
 
   if (dbError) {
     console.error("[contact] Supabase insert error:", dbError.message);
@@ -109,16 +93,15 @@ export async function POST(
     );
   }
 
-  // 4 ── Send internal email notification (fire-and-forget)
-  // Email failure must never block a successful DB write from returning 200.
-  sendContactNotification({ name, email, message }).catch((err: unknown) => {
+  sendContactNotification(data).catch((err: unknown) => {
     console.error("[contact] Email notification failed:", err);
   });
 
   return NextResponse.json<SuccessBody>(
     {
       success: true,
-      message: "Thank you for your message. We'll be in touch soon.",
+      message:
+        "Intake received. A principal will review your submission and respond if there is a mutual fit.",
     },
     { status: 200 }
   );

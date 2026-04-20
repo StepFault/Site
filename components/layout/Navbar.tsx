@@ -1,16 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Briefcase, Building2, Layers, Mail, MonitorPlay } from "lucide-react";
 import Link from "next/link";
 
 const NAV_LINKS = [
-  { label: "Deployments", href: "#deployments" },
-  { label: "Partners", href: "#trust" },
-  { label: "Demo", href: "#simulator" },
-  { label: "Contact", href: "/contact" },
+  { label: "Services", href: "#services", Icon: Briefcase },
+  { label: "Deployments", href: "#deployments", Icon: Layers },
+  { label: "Partners", href: "#trust", Icon: Building2 },
+  { label: "Demo", href: "#simulator", Icon: MonitorPlay },
+  { label: "Contact", href: "/contact", Icon: Mail },
 ] as const;
 
 export default function Navbar() {
+  const contactNav = NAV_LINKS[NAV_LINKS.length - 1];
+  const ContactIcon = contactNav.Icon;
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -8 }}
@@ -29,22 +34,28 @@ export default function Navbar() {
 
         {/* Nav links */}
         <ul className="flex items-center gap-5 sm:gap-6">
-          {NAV_LINKS.slice(0, -1).map(({ label, href }) => (
+          {NAV_LINKS.slice(0, -1).map(({ label, href, Icon }) => (
             <li key={label}>
               <a
                 href={href}
-                className="font-mono text-xs tracking-widest text-zinc-500 transition-colors hover:text-zinc-200"
+                className="inline-flex items-center gap-1.5 font-mono text-xs tracking-widest text-zinc-500 transition-colors hover:text-zinc-200"
               >
+                <Icon className="h-3.5 w-3.5 text-zinc-600" strokeWidth={2} aria-hidden />
                 {label}
               </a>
             </li>
           ))}
           <li>
             <a
-              href={NAV_LINKS[NAV_LINKS.length - 1].href}
-              className="rounded-md border border-zinc-700 bg-zinc-900 px-4 py-1.5 font-mono text-xs tracking-widest text-zinc-200 transition-colors hover:border-emerald-500/50 hover:bg-zinc-800 hover:text-emerald-400"
+              href={contactNav.href}
+              className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-900 px-4 py-1.5 font-mono text-xs tracking-widest text-zinc-200 transition-colors hover:border-emerald-500/50 hover:bg-zinc-800 hover:text-emerald-400"
             >
-              {NAV_LINKS[NAV_LINKS.length - 1].label}
+              <ContactIcon
+                className="h-3.5 w-3.5 text-zinc-500"
+                strokeWidth={2}
+                aria-hidden
+              />
+              {contactNav.label}
             </a>
           </li>
         </ul>

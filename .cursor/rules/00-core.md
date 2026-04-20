@@ -48,3 +48,8 @@ These are the fundamental principles that guide all development work in this pro
 - Use project-wide conventions for naming, structure, and organization
 - When in doubt, match existing patterns in the codebase
 
+# Business Context & Persona Override
+We are refactoring the site from a general software agency to an elite "Deep Tech Interim CTO & R&D Consultancy". 
+- **Target Audience:** Series A+ funded startups, Federal Grants (NSF/DARPA), and Enterprise R&D.
+- **Tone:** Authoritative, minimalist, highly technical, and strictly focused on Risk Mitigation, Capital Readiness, and Legal Compliance. 
+- **Key Verticals:** AI, Bioinformatics, Quantum Optimization, and Algorithmic Legal Compliance (SYSCOHADA/IFRS).
