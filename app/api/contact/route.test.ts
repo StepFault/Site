@@ -27,17 +27,23 @@ function jsonRequest(body: object): NextRequest {
   });
 }
 
+const validIntakeBody = {
+  executiveName: "Jane Doe",
+  company: "Example Corp",
+  corporateEmail: "jane@examplecorp.com",
+  fundingStage: "seed",
+  immediateTechnicalHurdle:
+    "We need deterministic orchestration with human-in-the-loop gates before production.",
+  engagementBudgetRange: "50k_plus",
+} as const;
+
 describe("POST /api/contact", () => {
   beforeEach(() => {
     mockInsert.mockClear();
   });
 
   it("returns 200 and success when body is valid and Supabase is available", async () => {
-    const req = jsonRequest({
-      name: "Jane Doe",
-      email: "jane@example.com",
-      message: "This is a test message with enough characters to pass validation.",
-    });
+    const req = jsonRequest({ ...validIntakeBody });
 
     const res = await POST(req);
     const data = await res.json();
@@ -45,20 +51,23 @@ describe("POST /api/contact", () => {
     expect(res.status).toBe(200);
     expect(data).toEqual({
       success: true,
-      message: "Thank you for your message. We'll be in touch soon.",
+      message:
+        "Intake received. A principal will review your submission and respond if there is a mutual fit.",
     });
     expect(mockInsert).toHaveBeenCalledWith({
-      name: "Jane Doe",
-      email: "jane@example.com",
-      message: "This is a test message with enough characters to pass validation.",
+      name: validIntakeBody.executiveName,
+      email: validIntakeBody.corporateEmail,
+      message: validIntakeBody.immediateTechnicalHurdle,
+      company: validIntakeBody.company,
+      funding_stage: validIntakeBody.fundingStage,
+      budget_range: validIntakeBody.engagementBudgetRange,
     });
   });
 
-  it("returns 422 when message is too short", async () => {
+  it("returns 422 when technical hurdle is too short", async () => {
     const req = jsonRequest({
-      name: "Jane",
-      email: "jane@example.com",
-      message: "Short",
+      ...validIntakeBody,
+      immediateTechnicalHurdle: "Short",
     });
 
     const res = await POST(req);

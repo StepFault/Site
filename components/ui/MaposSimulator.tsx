@@ -4,179 +4,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Pause, Play, RotateCcw, Terminal } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 
-type LogType =
-  | "system"
-  | "success"
-  | "blank"
-  | "header"
-  | "data"
-  | "route"
-  | "exec"
-  | "verification"
-  | "pending";
+import type { MaposLogType, MaposLogEntry } from "@/lib/mapos-sim";
+import {
+  MAPOS_SIMULATION_SEQUENCE,
+  MAPOS_LINE_DELAY_MS,
+  MAPOS_PAUSE_AT_VERIFICATION_MS,
+} from "@/lib/mapos-sim";
 
-interface LogEntry {
-  type: LogType;
-  text?: string;
-}
-
-const SECTORS = ["legal", "health", "security", "finance"] as const;
-type Sector = (typeof SECTORS)[number];
-
-function buildSectorSequence(sector: Sector): LogEntry[] {
-  const sequences: Record<Sector, LogEntry[]> = {
-    legal: [
-      { type: "system", text: "MAPOS Runtime v1.0.0 initialized" },
-      { type: "system", text: "Connecting to deterministic orchestration layer..." },
-      { type: "success", text: "✓ Connection established" },
-      { type: "blank" },
-      { type: "header", text: "DATA INGESTION [Legal]" },
-      { type: "data", text: "→ Ingesting: regulatory_frameworks.json (2.4 MB)" },
-      { type: "data", text: "→ Ingesting: case_precedents_2024.zip (12.1 MB)" },
-      { type: "data", text: "→ Ingesting: compliance_matrices.yaml (847 KB)" },
-      { type: "success", text: "✓ Data ingestion complete: 3 sources, 15.3 MB total" },
-      { type: "blank" },
-      { type: "header", text: "AGENT ROUTING" },
-      { type: "route", text: "ROUTE: Agent_Legal_04 → regulatory_compliance" },
-      { type: "route", text: "ROUTE: Agent_Risk_02 → risk_assessment_matrix" },
-      { type: "route", text: "ROUTE: Agent_Docs_01 → precedent_analysis" },
-      { type: "route", text: "ROUTE: Agent_Synth_03 → cross_domain_synthesis" },
-      { type: "success", text: "✓ All agents dispatched to target domains" },
-      { type: "blank" },
-      { type: "header", text: "EXECUTION PIPELINE" },
-      { type: "exec", text: "Executing: Agent_Legal_04.compliance_check()" },
-      { type: "exec", text: "  → Output hash: 0x7a3f2e1b" },
-      { type: "exec", text: "Executing: Agent_Risk_02.risk_score()" },
-      { type: "exec", text: "  → Output hash: 0x4c8d9e2a" },
-      { type: "exec", text: "Executing: Agent_Docs_01.precedent_match()" },
-      { type: "exec", text: "  → Output hash: 0x91b2f3c8" },
-      { type: "exec", text: "Executing: Agent_Synth_03.synthesize()" },
-      { type: "exec", text: "  → Output hash: 0x2e4a8d1f" },
-      { type: "success", text: "✓ Execution pipeline complete" },
-      { type: "blank" },
-      { type: "verification", text: "STATUS: Human-in-the-Loop Verification Gate" },
-      { type: "pending", text: "⏸ Awaiting human verification..." },
-    ],
-    health: [
-      { type: "system", text: "MAPOS Runtime v1.0.0 initialized" },
-      { type: "system", text: "Connecting to deterministic orchestration layer..." },
-      { type: "success", text: "✓ Connection established" },
-      { type: "blank" },
-      { type: "header", text: "DATA INGESTION [Health]" },
-      { type: "data", text: "→ Ingesting: biomarker_schemas.json (1.2 MB)" },
-      { type: "data", text: "→ Ingesting: clinical_guidelines_2024.zip (8.6 MB)" },
-      { type: "data", text: "→ Ingesting: dietary_reference.yaml (412 KB)" },
-      { type: "success", text: "✓ Data ingestion complete: 3 sources, 10.2 MB total" },
-      { type: "blank" },
-      { type: "header", text: "AGENT ROUTING" },
-      { type: "route", text: "ROUTE: Agent_Health_01 → clinical_compliance" },
-      { type: "route", text: "ROUTE: Agent_Nutrition_03 → intervention_engine" },
-      { type: "route", text: "ROUTE: Agent_Biomarker_02 → panel_analysis" },
-      { type: "route", text: "ROUTE: Agent_Synth_04 → outcome_synthesis" },
-      { type: "success", text: "✓ All agents dispatched to target domains" },
-      { type: "blank" },
-      { type: "header", text: "EXECUTION PIPELINE" },
-      { type: "exec", text: "Executing: Agent_Health_01.compliance_check()" },
-      { type: "exec", text: "  → Output hash: 0x3b8e1c9a" },
-      { type: "exec", text: "Executing: Agent_Nutrition_03.recommend()" },
-      { type: "exec", text: "  → Output hash: 0x5d2f7e4b" },
-      { type: "exec", text: "Executing: Agent_Biomarker_02.analyze()" },
-      { type: "exec", text: "  → Output hash: 0x8a1c6d3e" },
-      { type: "exec", text: "Executing: Agent_Synth_04.synthesize()" },
-      { type: "exec", text: "  → Output hash: 0x1f9b4a2c" },
-      { type: "success", text: "✓ Execution pipeline complete" },
-      { type: "blank" },
-      { type: "verification", text: "STATUS: Human-in-the-Loop Verification Gate" },
-      { type: "pending", text: "⏸ Awaiting human verification..." },
-    ],
-    security: [
-      { type: "system", text: "MAPOS Runtime v1.0.0 initialized" },
-      { type: "system", text: "Connecting to deterministic orchestration layer..." },
-      { type: "success", text: "✓ Connection established" },
-      { type: "blank" },
-      { type: "header", text: "DATA INGESTION [Security]" },
-      { type: "data", text: "→ Ingesting: threat_indicators.json (4.1 MB)" },
-      { type: "data", text: "→ Ingesting: playbook_registry.zip (6.2 MB)" },
-      { type: "data", text: "→ Ingesting: siem_rules.yaml (1.8 MB)" },
-      { type: "success", text: "✓ Data ingestion complete: 3 sources, 12.1 MB total" },
-      { type: "blank" },
-      { type: "header", text: "AGENT ROUTING" },
-      { type: "route", text: "ROUTE: Agent_Threat_01 → correlation_engine" },
-      { type: "route", text: "ROUTE: Agent_Playbook_02 → response_orchestration" },
-      { type: "route", text: "ROUTE: Agent_SIEM_03 → rule_evaluation" },
-      { type: "route", text: "ROUTE: Agent_Synth_05 → incident_synthesis" },
-      { type: "success", text: "✓ All agents dispatched to target domains" },
-      { type: "blank" },
-      { type: "header", text: "EXECUTION PIPELINE" },
-      { type: "exec", text: "Executing: Agent_Threat_01.correlate()" },
-      { type: "exec", text: "  → Output hash: 0x6e2d8b5c" },
-      { type: "exec", text: "Executing: Agent_Playbook_02.execute()" },
-      { type: "exec", text: "  → Output hash: 0x9c4a1f7e" },
-      { type: "exec", text: "Executing: Agent_SIEM_03.evaluate()" },
-      { type: "exec", text: "  → Output hash: 0x2b7e3d9a" },
-      { type: "exec", text: "Executing: Agent_Synth_05.synthesize()" },
-      { type: "exec", text: "  → Output hash: 0x4f1a6c8b" },
-      { type: "success", text: "✓ Execution pipeline complete" },
-      { type: "blank" },
-      { type: "verification", text: "STATUS: Human-in-the-Loop Verification Gate" },
-      { type: "pending", text: "⏸ Awaiting human verification..." },
-    ],
-    finance: [
-      { type: "system", text: "MAPOS Runtime v1.0.0 initialized" },
-      { type: "system", text: "Connecting to deterministic orchestration layer..." },
-      { type: "success", text: "✓ Connection established" },
-      { type: "blank" },
-      { type: "header", text: "DATA INGESTION [Finance]" },
-      { type: "data", text: "→ Ingesting: regulatory_frameworks.json (3.1 MB)" },
-      { type: "data", text: "→ Ingesting: market_risk_models.zip (9.4 MB)" },
-      { type: "data", text: "→ Ingesting: compliance_checklist.yaml (622 KB)" },
-      { type: "success", text: "✓ Data ingestion complete: 3 sources, 13.1 MB total" },
-      { type: "blank" },
-      { type: "header", text: "AGENT ROUTING" },
-      { type: "route", text: "ROUTE: Agent_Compliance_01 → regulatory_check" },
-      { type: "route", text: "ROUTE: Agent_Risk_02 → market_risk_matrix" },
-      { type: "route", text: "ROUTE: Agent_Report_03 → advisory_synthesis" },
-      { type: "route", text: "ROUTE: Agent_Synth_06 → consensus_output" },
-      { type: "success", text: "✓ All agents dispatched to target domains" },
-      { type: "blank" },
-      { type: "header", text: "EXECUTION PIPELINE" },
-      { type: "exec", text: "Executing: Agent_Compliance_01.regulatory_check()" },
-      { type: "exec", text: "  → Output hash: 0x7c3e9b2a" },
-      { type: "exec", text: "Executing: Agent_Risk_02.risk_score()" },
-      { type: "exec", text: "  → Output hash: 0x1d5f8e4c" },
-      { type: "exec", text: "Executing: Agent_Report_03.synthesize()" },
-      { type: "exec", text: "  → Output hash: 0x8b2a6f1d" },
-      { type: "exec", text: "Executing: Agent_Synth_06.consensus()" },
-      { type: "exec", text: "  → Output hash: 0x3e9c4b7a" },
-      { type: "success", text: "✓ Execution pipeline complete" },
-      { type: "blank" },
-      { type: "verification", text: "STATUS: Human-in-the-Loop Verification Gate" },
-      { type: "pending", text: "⏸ Awaiting human verification..." },
-    ],
-  };
-  return sequences[sector];
-}
-
-function buildFullSequence(): LogEntry[] {
-  const separator = (label: string): LogEntry[] => [
-    { type: "blank" },
-    { type: "header", text: `━━━ SECTOR: ${label.toUpperCase()} ━━━` },
-    { type: "blank" },
-  ];
-  const parts: LogEntry[] = [];
-  SECTORS.forEach((sector, i) => {
-    if (i > 0) parts.push(...separator(sector));
-    parts.push(...buildSectorSequence(sector));
-  });
-  return parts;
-}
-
-const SIMULATION_SEQUENCE = buildFullSequence();
-
-const LINE_DELAY_MS = 80; // Deterministic timing per line
-const PAUSE_AT_VERIFICATION_MS = 2000; // Pause before showing "awaiting" state
-
-function getLogStyle(type: LogType): string {
+function getLogStyle(type: MaposLogType): string {
   switch (type) {
     case "system":
       return "text-zinc-500";
@@ -201,7 +36,7 @@ function getLogStyle(type: LogType): string {
 }
 
 export default function MaposSimulator() {
-  const [lines, setLines] = useState<LogEntry[]>([]);
+  const [lines, setLines] = useState<MaposLogEntry[]>([]);
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -225,12 +60,12 @@ export default function MaposSimulator() {
     let timeoutId: NodeJS.Timeout;
 
     const addNextLine = () => {
-      if (lineIndex >= SIMULATION_SEQUENCE.length) {
+      if (lineIndex >= MAPOS_SIMULATION_SEQUENCE.length) {
         setIsRunning(false);
         return;
       }
 
-      const entry = SIMULATION_SEQUENCE[lineIndex];
+      const entry = MAPOS_SIMULATION_SEQUENCE[lineIndex];
 
       // Pause at verification gate
       if (entry.type === "verification") {
@@ -240,7 +75,7 @@ export default function MaposSimulator() {
           setLines((prev) => [...prev, entry]);
           lineIndex++;
           scheduleNextLine();
-        }, PAUSE_AT_VERIFICATION_MS);
+        }, MAPOS_PAUSE_AT_VERIFICATION_MS);
         return;
       }
 
@@ -250,7 +85,7 @@ export default function MaposSimulator() {
     };
 
     const scheduleNextLine = () => {
-      timeoutId = setTimeout(addNextLine, LINE_DELAY_MS);
+      timeoutId = setTimeout(addNextLine, MAPOS_LINE_DELAY_MS);
     };
 
     // Start after brief delay
@@ -325,7 +160,7 @@ export default function MaposSimulator() {
               className={`h-2 w-2 rounded-full ${
                 isRunning
                   ? "bg-emerald-400 animate-pulse"
-                  : lines.length === SIMULATION_SEQUENCE.length
+                  : lines.length === MAPOS_SIMULATION_SEQUENCE.length
                   ? "bg-emerald-400"
                   : "bg-zinc-700"
               }`}
@@ -333,7 +168,7 @@ export default function MaposSimulator() {
             <span className="font-mono text-xs text-zinc-500">
               {isRunning
                 ? "Running"
-                : lines.length === SIMULATION_SEQUENCE.length
+                : lines.length === MAPOS_SIMULATION_SEQUENCE.length
                 ? "Complete"
                 : "Idle"}
             </span>
