@@ -173,7 +173,7 @@ export default function Deployments() {
       >
         <div className="flex flex-col gap-2">
           <h2 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            // TECHNICAL TRACK RECORD
+            {"// TECHNICAL TRACK RECORD"}
           </h2>
           <p className="text-2xl font-semibold tracking-tight text-zinc-200">
             Executive case studies

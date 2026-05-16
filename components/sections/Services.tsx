@@ -130,7 +130,7 @@ export default function Services() {
         className="mb-10 flex flex-col gap-3 md:mb-12"
       >
         <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-zinc-500">
-          // Executive offerings
+          {"// Executive offerings"}
         </h2>
         <p className="max-w-2xl text-2xl font-semibold tracking-tight text-zinc-200 md:text-[1.65rem] md:leading-snug">
           Principal-led mandates for institutions operating under technical and

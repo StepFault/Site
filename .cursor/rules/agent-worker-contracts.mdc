@@ -1,0 +1,26 @@
+---
+description: Path A — structured worker outputs for sub-agents; no live LLM orchestration in this repo.
+globs:
+  - lib/**/*
+  - app/**/*
+  - components/**/*
+alwaysApply: false
+---
+
+# Agent worker contracts (Path A)
+
+This repository is the **Stepfault showroom**: UI **simulates** MAPOS. There is **no** production LangGraph/CrewAI/LLM router here.
+
+When you are asked to act as one of the roles below, respond with **a single JSON object only** (no markdown fences unless the user explicitly asked for code). The object **must** validate with the matching Zod schema in the codebase:
+
+| Role | Schema (import from `@/lib/agent-contracts`) |
+|------|-----------------------------------------------|
+| UI / UX worker | `uiUxWorkerOutputSchema` — `worker` must be `"ui_ux"` |
+| Data & state worker | `dataStateWorkerOutputSchema` — `worker` must be `"data_state"` |
+| Integration & API worker | `integrationApiWorkerOutputSchema` — `worker` must be `"integration_api"` |
+
+Validate locally: `uiUxWorkerOutputSchema.safeParse(JSON.parse(text))` (and the analogous calls for the other two).
+
+**Prompt cache tip:** Put fixed role instructions and schema field names first; put user-specific task text last under a clear `--- TASK ---` delimiter.
+
+**Do not** claim external API shapes or package APIs without verifying imports/types in this repo.

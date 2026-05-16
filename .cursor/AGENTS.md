@@ -149,6 +149,35 @@ This document defines specific AI personas you can invoke in Cursor IDE using `@
 
 ---
 
+## Path A: Structured worker outputs (`@UiUx`, `@DataState`, `@Integration`)
+
+The repo is the **investor showroom**; MAPOS is **simulated in UI** only. Sub-agents should still answer with **strict JSON** when asked to act in one of these roles:
+
+| Persona | Focus | Validated by |
+|---------|--------|--------------|
+| **@UiUx** | Intent to components, Tailwind/shadcn-style structure, Design Mode constraints | `uiUxWorkerOutputSchema` in `lib/agent-contracts/worker-schemas.ts` |
+| **@DataState** | Supabase shapes, Zod, migrations, deterministic app state | `dataStateWorkerOutputSchema` |
+| **@Integration** | Route handlers, env vars, auth patterns, failure taxonomies | `integrationApiWorkerOutputSchema` |
+
+**Invocation:** e.g. `@UiUx Propose hero refinements` — respond with **one JSON object only** that passes `*.safeParse()`.
+
+**Imports:** `import { uiUxWorkerOutputSchema } from "@/lib/agent-contracts"` (and siblings).
+
+Cursor rule: `.cursor/rules/agent-worker-contracts.mdc`.
+
+---
+
+## Repository boundary (intentionally deferred)
+
+Do **not** implement in this repo unless the product charter changes:
+
+- Live multi-agent routers (LangGraph, CrewAI, peer LLM mesh) calling models from production code
+- MAPOS “real” orchestration backends (Python/Node workers, message buses)
+- Postgres MCP or other data MCP solely for agent mesh state (Supabase for the site is in scope)
+- Playwright E2E suites — add only when critical flows need regression locks; CI already runs `lint`, `test:run`, and `build`
+
+---
+
 ## Usage Guidelines
 
 ### Invoking Agents
@@ -178,6 +207,9 @@ You can mention multiple agents in one request:
 | "Why is this failing?" | @Debug |
 | "Fix this error..." | @Debug |
 | "Add logging for..." | @Debug |
+| "Map Tailwind/UI to components (JSON contract)" | @UiUx |
+| "Supabase / Zod / migrations (JSON contract)" | @DataState |
+| "API route / webhooks / failure modes (JSON contract)" | @Integration |
 
 ---
 
@@ -203,6 +235,6 @@ You can extend these agents by:
 
 ---
 
-**Last Updated**: 2025-01-09
+**Last Updated**: 2026-05-16
 **Project**: StepFault Site
 

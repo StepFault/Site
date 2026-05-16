@@ -4,6 +4,7 @@ import Services from "@/components/sections/Services";
 import TrustSignals from "@/components/sections/TrustSignals";
 import Deployments from "@/components/sections/Deployments";
 import MaposSimulator from "@/components/ui/MaposSimulator";
+import MaposSectorPreview from "@/components/ui/MaposSectorPreview";
 import AccessGate from "@/components/sections/AccessGate";
 
 // ── Section divider ────────────────────────────────────────────────────────────
@@ -48,6 +49,16 @@ export default function HomePage() {
             <span className="font-mono text-xs text-zinc-700">01 / 03</span>
           </div>
           <MaposSimulator />
+
+          <div className="mt-10 flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h3 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
+                Single-sector trace · same runtime
+              </h3>
+              <span className="font-mono text-xs text-zinc-700">02 / 03</span>
+            </div>
+            <MaposSectorPreview />
+          </div>
         </section>
 
         {/* ── 04 · TECHNICAL TRACK RECORD ─────────────────────────────────────── */}

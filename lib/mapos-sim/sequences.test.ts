@@ -10,12 +10,12 @@ describe("mapos-sim sequences", () => {
   it("keeps a stable full trace length", () => {
     const rebuilt = buildFullSimulationSequence();
     expect(rebuilt).toEqual(MAPOS_SIMULATION_SEQUENCE);
-    expect(MAPOS_SIMULATION_SEQUENCE.length).toBe(129);
+    expect(MAPOS_SIMULATION_SEQUENCE.length).toBe(139);
   });
 
-  it("produces four verification gates (one per sector)", () => {
+  it("produces verification gates for each sector plus showroom epilogue", () => {
     const gates = MAPOS_SIMULATION_SEQUENCE.filter((l) => l.type === "verification");
-    expect(gates).toHaveLength(MAPOS_SECTORS.length);
+    expect(gates).toHaveLength(MAPOS_SECTORS.length + 1);
   });
 
   it("starts each sector with runtime initialization", () => {

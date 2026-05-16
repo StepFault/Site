@@ -64,6 +64,9 @@ $RECYCLE.BIN/
 *.so
 *.out
 
+# Cursor — local agent rollups (optional; copy from .cursor-agent-memory.example.json)
+.cursor-agent-memory
+
 # IDEs and editors
 .idea/
 .vscode/

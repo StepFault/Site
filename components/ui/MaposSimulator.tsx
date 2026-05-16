@@ -11,6 +11,11 @@ import {
   MAPOS_PAUSE_AT_VERIFICATION_MS,
 } from "@/lib/mapos-sim";
 
+export type MaposSimulatorProps = {
+  /** Defaults to full multi-sector showroom trace including epilogue. */
+  trace?: MaposLogEntry[];
+};
+
 function getLogStyle(type: MaposLogType): string {
   switch (type) {
     case "system":
@@ -35,7 +40,9 @@ function getLogStyle(type: MaposLogType): string {
   }
 }
 
-export default function MaposSimulator() {
+export default function MaposSimulator({
+  trace = MAPOS_SIMULATION_SEQUENCE,
+}: MaposSimulatorProps) {
   const [lines, setLines] = useState<MaposLogEntry[]>([]);
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -60,12 +67,12 @@ export default function MaposSimulator() {
     let timeoutId: NodeJS.Timeout;
 
     const addNextLine = () => {
-      if (lineIndex >= MAPOS_SIMULATION_SEQUENCE.length) {
+      if (lineIndex >= trace.length) {
         setIsRunning(false);
         return;
       }
 
-      const entry = MAPOS_SIMULATION_SEQUENCE[lineIndex];
+      const entry = trace[lineIndex];
 
       // Pause at verification gate
       if (entry.type === "verification") {
@@ -94,7 +101,7 @@ export default function MaposSimulator() {
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [isRunning]);
+  }, [isRunning, trace]);
 
   return (
     <div className="w-full max-w-3xl">
@@ -160,7 +167,7 @@ export default function MaposSimulator() {
               className={`h-2 w-2 rounded-full ${
                 isRunning
                   ? "bg-emerald-400 animate-pulse"
-                  : lines.length === MAPOS_SIMULATION_SEQUENCE.length
+                  : lines.length === trace.length
                   ? "bg-emerald-400"
                   : "bg-zinc-700"
               }`}
@@ -168,7 +175,7 @@ export default function MaposSimulator() {
             <span className="font-mono text-xs text-zinc-500">
               {isRunning
                 ? "Running"
-                : lines.length === MAPOS_SIMULATION_SEQUENCE.length
+                : lines.length === trace.length
                 ? "Complete"
                 : "Idle"}
             </span>

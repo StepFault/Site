@@ -143,13 +143,36 @@ function sectorSeparatorLabel(sector: MaposSector): MaposLogEntry[] {
   ];
 }
 
-/** Full multi-sector trace: same content as concatenating each sector in `MAPOS_SECTORS` order with dividers. */
+/** Final showroom chapter: deterministic closure after all verticals (UI-only). */
+export function buildTraceEpilogue(): MaposLogEntry[] {
+  return [
+    { type: "blank" },
+    { type: "header", text: "━━━ TRACE EPILOGUE: HANDOFF ━━━" },
+    { type: "blank" },
+    { type: "system", text: "Aggregating sector hashes into Merkle snapshot..." },
+    { type: "data", text: "→ Snapshot ID: mapos-showroom-trace-v1" },
+    {
+      type: "data",
+      text: "→ Attestation: replay token bound to static sequence revision",
+    },
+    { type: "success", text: "✓ Deterministic closure: all sector gates acknowledged" },
+    { type: "blank" },
+    {
+      type: "verification",
+      text: "STATUS: Showroom trace complete (no production agents invoked)",
+    },
+    { type: "pending", text: "⏸ Intake and review happen outside this runtime." },
+  ];
+}
+
+/** Full multi-sector trace: each sector in `MAPOS_SECTORS` order with dividers, plus epilogue. */
 export function buildFullSimulationSequence(): MaposLogEntry[] {
   const parts: MaposLogEntry[] = [];
   MAPOS_SECTORS.forEach((sector, i) => {
     if (i > 0) parts.push(...sectorSeparatorLabel(sector));
     parts.push(...buildSectorSequence(sector));
   });
+  parts.push(...buildTraceEpilogue());
   return parts;
 }
 

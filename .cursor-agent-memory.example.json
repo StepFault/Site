@@ -1,0 +1,8 @@
+{
+  "updated_at": "2026-05-16T00:00:00.000Z",
+  "branch": "main",
+  "last_goal": "Short description of the current multi-step agent goal.",
+  "open_decisions": ["Decision or question still unresolved."],
+  "files_touched_recently": ["relative/path/from/repo/root.ts"],
+  "constraints": ["Path A: no real MAPOS backend in this repo."]
+}
