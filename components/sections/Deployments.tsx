@@ -176,11 +176,11 @@ export default function Deployments() {
             {"// TECHNICAL TRACK RECORD"}
           </h2>
           <p className="text-2xl font-semibold tracking-tight text-zinc-200">
-            Executive case studies
+            Selected program evidence
           </p>
         </div>
         <span className="shrink-0 font-mono text-xs text-zinc-700">
-          {caseStudies.length} anchor programs
+          {caseStudies.length} anchor builds
         </span>
       </motion.div>
 

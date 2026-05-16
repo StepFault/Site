@@ -5,8 +5,8 @@
       "slug": "cross-border-fintech-compliance",
       "name": "Cross-Border Fintech & Legal Compliance",
       "domain": "Executive case study",
-      "scale": "Institution required a single operating model for cross-border product and treasury flows where national accounting (SYSCOHADA) and international reporting (IFRS) could not drift—with boards, regulators, and investors demanding reconcilable truth in near real time.",
-      "solution": "Rearchitected Next.js/PostgreSQL infrastructure enforcing strict SYSCOHADA accounting standards and IFRS bridging using Human-In-The-Loop AI agents, so policy, bookings, and disclosures stay aligned end-to-end with deterministic review gates before any outward-facing numbers ship.",
+      "scale": "A regulated institution needed one operating model for cross-border product and treasury: national accounting (SYSCOHADA) and international reporting (IFRS) had to stay reconcilable while boards, regulators, and investors asked for the same numbers in near real time.",
+      "solution": "Rebuilt the core stack on Next.js and PostgreSQL with strict SYSCOHADA enforcement, IFRS bridging, and human-in-the-loop agents—policy, bookings, and disclosures stay aligned behind deterministic review gates before anything external ships.",
       "status": "case-study",
       "image": "/projects/realverdict.svg",
       "metrics": [
@@ -21,8 +21,8 @@
       "slug": "institutional-social-impact",
       "name": "Institutional Social Impact at Scale",
       "domain": "Executive case study",
-      "scale": "Programs spanning housing stability, clinical access, and household financial health—where field operations, data agreements, and funder governance had to interoperate without degrading outcomes for vulnerable populations.",
-      "solution": "Led Google.org-funded initiatives integrating complex systems for housing, medical, and financial infrastructure, aligning delivery partners, data contracts, and measurement so capital translated into durable access—not one-off pilots.",
+      "scale": "Programs across housing stability, clinical access, and household financial health—field operations, data agreements, and funder governance had to interoperate without eroding outcomes for vulnerable populations.",
+      "solution": "Led Google.org-funded work wiring housing, clinical, and financial infrastructure: clear data contracts, partner alignment, and measurement so capital produced durable access instead of one-off pilots.",
       "status": "case-study",
       "image": "/projects/municipal.svg",
       "metrics": [

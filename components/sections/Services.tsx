@@ -20,9 +20,9 @@ const OFFERING_TIERS: readonly OfferingTier[] = [
     title: "Interim CTO & Architecture Rescue",
     icon: Building2,
     bullets: [
-      "VC Due Diligence Prep",
-      "Codebase Stabilization",
-      "Enterprise-Grade Scaling",
+      "Technical diligence and board-ready narratives",
+      "Stabilization under institutional scale and audit pressure",
+      "Roadmaps that engineering teams can actually execute",
     ],
   },
   {
@@ -31,9 +31,9 @@ const OFFERING_TIERS: readonly OfferingTier[] = [
     title: "Deep Tech R&D",
     icon: Atom,
     bullets: [
-      "Custom AI Integration",
-      "Bioinformatics Pipelines",
-      "Quantum Optimization algorithms",
+      "Production AI integration with review gates",
+      "Bioinformatics and regulated data pipelines",
+      "Classical and quantum optimization where it earns its complexity",
     ],
   },
   {
@@ -42,17 +42,17 @@ const OFFERING_TIERS: readonly OfferingTier[] = [
     title: "Algorithmic Legal Compliance",
     icon: Scale,
     bullets: [
-      "Cross-Border Fintech Compliance",
-      "SYSCOHADA/IFRS mapping",
-      "Human-In-The-Loop regulatory enforcement",
+      "Cross-border fintech and treasury compliance",
+      "National and international accounting alignment (e.g. SYSCOHADA ↔ IFRS)",
+      "Human-in-the-loop policy and disclosure enforcement",
     ],
   },
 ] as const;
 
 const ENGAGEMENT_STEPS = [
-  { n: "1", title: "Paid Discovery Audit" },
-  { n: "2", title: "Retainer Execution" },
-  { n: "3", title: "Team Handoff" },
+  { n: "1", title: "Paid technical audit" },
+  { n: "2", title: "Retainer execution" },
+  { n: "3", title: "Handoff to internal leadership" },
 ] as const;
 
 const tierCardClass =
@@ -133,8 +133,8 @@ export default function Services() {
           {"// Executive offerings"}
         </h2>
         <p className="max-w-2xl text-2xl font-semibold tracking-tight text-zinc-200 md:text-[1.65rem] md:leading-snug">
-          Principal-led mandates for institutions operating under technical and
-          regulatory constraint.
+          High-stakes mandates for teams that cannot separate code, proof, and
+          regulatory truth.
         </p>
       </motion.div>
 

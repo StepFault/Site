@@ -15,8 +15,8 @@ import {
 } from "@/lib/validation/contact-intake";
 
 const LOADING_PHASES = [
-  { key: "auth", label: "Verifying corporate identity signal..." },
-  { key: "queue", label: "Encrypting intake payload for principal queue..." },
+  { key: "auth", label: "Verifying corporate email signal…" },
+  { key: "queue", label: "Sealing payload for principal queue…" },
 ] as const;
 
 const PHASE_MS = 900;
@@ -199,8 +199,8 @@ export default function EngagementIntakeForm({
             Intake committed successfully.
           </p>
           <p className="mt-2 text-zinc-400">
-            Your submission is queued for principal review. Only funded-scope
-            engagements are accepted; you will hear back if there is alignment.
+            Queued for principal review. We reply only when scope, budget, and
+            technical fit align; expect silence otherwise.
           </p>
           {variant === "page" && (
             <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
@@ -232,8 +232,8 @@ export default function EngagementIntakeForm({
 
   const chromeTitle =
     variant === "embedded"
-      ? "stepfault-intake, technical-audit.v1"
-      : "stepfault-secure-intake, funded-clients.v2";
+      ? "stepfault-intake · homepage.v1"
+      : "stepfault-intake · funded-client.v2";
 
   return (
     <div className="rounded-md border border-zinc-800 bg-zinc-950 shadow-[0_0_0_1px_rgba(24,24,27,0.4)]">
@@ -250,8 +250,8 @@ export default function EngagementIntakeForm({
           --gate=funded --require-corporate-email
         </p>
         <p className="mt-2 font-mono text-xs leading-relaxed text-zinc-600">
-          Restricted channel. Corporate email required. All fields audited before
-          queue admission.
+          Restricted channel. Corporate email only. Every field is validated before
+          the queue admits a submission.
         </p>
       </div>
 
@@ -265,7 +265,7 @@ export default function EngagementIntakeForm({
             type="text"
             autoComplete="name"
             disabled={busy}
-            placeholder="Principal or technical executive"
+            placeholder="Name of the accountable executive"
             className={inputRow}
             {...register("executiveName")}
           />
@@ -318,7 +318,7 @@ export default function EngagementIntakeForm({
           <textarea
             rows={variant === "embedded" ? 4 : 5}
             disabled={busy}
-            placeholder="Systems constraints, compliance boundaries, timeline, and failure modes..."
+            placeholder="Constraints, compliance boundaries, timeline, what breaks if you wait"
             className={`${inputRow} resize-none leading-relaxed`}
             {...register("immediateTechnicalHurdle")}
           />
@@ -385,8 +385,8 @@ export default function EngagementIntakeForm({
                 className="font-mono text-xs text-zinc-700"
               >
                 {busy
-                  ? "Transmitting secure payload..."
-                  : "Review before commit — submissions are logged."}
+                  ? "Transmitting encrypted intake…"
+                  : "Double-check before submit — intakes are logged and reviewed."}
               </motion.span>
             )}
           </AnimatePresence>
@@ -404,7 +404,7 @@ export default function EngagementIntakeForm({
             ) : (
               <>
                 <Lock className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
-                Commit secure intake
+                Commit intake
               </>
             )}
           </button>

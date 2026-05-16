@@ -32,11 +32,11 @@ export default function HomePage() {
         <Hero />
 
         {/* ── 02 · EXECUTIVE OFFERINGS ─────────────────────────────────────────── */}
-        <SectionDivider label="// executive offerings" />
+        <SectionDivider label="// offerings" />
         <Services />
 
         {/* ── 03 · DEMO (reference trace) ─────────────────────────────────────── */}
-        <SectionDivider label="// mapos reference trace" />
+        <SectionDivider label="// mapos · reference trace" />
 
         <section
           id="simulator"
@@ -44,7 +44,7 @@ export default function HomePage() {
         >
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-              MAPOS Runtime · Deterministic orchestration (UI reference)
+              MAPOS · Deterministic orchestration (showroom trace)
             </h2>
             <span className="font-mono text-xs text-zinc-700">01 / 03</span>
           </div>
@@ -53,7 +53,7 @@ export default function HomePage() {
           <div className="mt-10 flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <h3 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-                Single-sector trace · same runtime
+                One vertical · same playback engine
               </h3>
               <span className="font-mono text-xs text-zinc-700">02 / 03</span>
             </div>
@@ -62,15 +62,15 @@ export default function HomePage() {
         </section>
 
         {/* ── 04 · TECHNICAL TRACK RECORD ─────────────────────────────────────── */}
-        <SectionDivider label="// technical track record" />
+        <SectionDivider label="// track record" />
         <Deployments />
 
         {/* ── 05 · RESEARCH & STACK ─────────────────────────────────────────────── */}
-        <SectionDivider label="// research & stack relationships" />
+        <SectionDivider label="// stack & research context" />
         <TrustSignals />
 
         {/* ── 06 · ENGAGEMENT INTAKE ────────────────────────────────────────────── */}
-        <SectionDivider label="// engagement protocol" />
+        <SectionDivider label="// intake" />
 
         <section
           id="access"
@@ -78,7 +78,7 @@ export default function HomePage() {
         >
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-              Technical intake · Privileged review queue
+              Privileged intake · principal review queue
             </h2>
             <span className="font-mono text-xs text-zinc-700">03 / 03</span>
           </div>

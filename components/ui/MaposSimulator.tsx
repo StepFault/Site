@@ -118,7 +118,7 @@ export default function MaposSimulator({
             aria-hidden
           />
           <span className="font-mono text-xs text-zinc-500">
-            mapos-runtime · deterministic trace (UI-only)
+            mapos-runtime · showroom trace (UI-only)
           </span>
         </div>
 

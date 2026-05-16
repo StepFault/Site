@@ -39,10 +39,10 @@ export default function Hero() {
         />
         <span>Stepfault</span>
         <span className="text-zinc-700">|</span>
-        <span>Interim CTO &amp; Deep Tech R&amp;D</span>
+        <span>Interim CTO · Deep-tech R&amp;D · MAPOS</span>
         <span className="text-zinc-700">|</span>
         <span>
-          Status: <span className="text-emerald-400">Accepting audits</span>
+          Status: <span className="text-emerald-400">Principal capacity open</span>
         </span>
       </motion.div>
 
@@ -50,9 +50,9 @@ export default function Hero() {
         variants={fadeUp}
         className="max-w-4xl text-balance text-3xl font-semibold tracking-tight text-zinc-200 sm:text-4xl md:text-5xl"
       >
-        Architecting complex systems at the intersection of{" "}
+        Multi-agent orchestration and systems architecture where{" "}
         <span className="text-emerald-400">
-          AI, Bioinformatics, and Legal Compliance.
+          AI, bioinformatics, and legal compliance stay one accountable stack.
         </span>
       </motion.h1>
 
@@ -60,8 +60,8 @@ export default function Hero() {
         variants={fadeUp}
         className="max-w-xl text-base text-zinc-500 sm:text-lg"
       >
-        Interim CTO &amp; Deep Tech R&amp;D for Series A+ startups, federal
-        initiatives, and enterprise.
+        Interim CTO and principal R&amp;D for Series A+ and institutional
+        teams—architecture, proof, and regulatory posture in the same room.
       </motion.p>
 
       <motion.div
@@ -71,7 +71,7 @@ export default function Hero() {
         <span>
           Mandate:{" "}
           <span className="text-zinc-400">
-            Architecture · R&amp;D leadership · Technical governance
+            Architecture · Research leadership · Technical governance
           </span>
         </span>
         <span className="text-zinc-800">|</span>
@@ -97,7 +97,7 @@ export default function Hero() {
           className="inline-flex items-center justify-center gap-2 rounded-md bg-emerald-400 px-6 py-2.5 font-mono text-sm text-black transition-colors hover:bg-emerald-300"
         >
           <ClipboardCheck className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
-          Engage for Technical Audit
+          Request principal review
         </Link>
         <Link
           href="#simulator"
@@ -107,7 +107,7 @@ export default function Hero() {
             className="h-3.5 w-3.5 shrink-0 text-zinc-500"
             strokeWidth={2}
           />
-          MAPOS runtime demo
+          MAPOS reference trace
         </Link>
       </motion.div>
     </motion.section>

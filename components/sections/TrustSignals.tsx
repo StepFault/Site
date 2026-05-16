@@ -220,6 +220,10 @@ export default function TrustSignals() {
         transition={{ duration: 0.5 }}
         className="flex flex-col gap-8 rounded-md border border-zinc-800 bg-zinc-900/30 px-6 py-8"
       >
+        <p className="max-w-xl text-left font-mono text-xs leading-relaxed text-zinc-500">
+          Research and infrastructure we ship against—relationships that inform
+          architecture, not logo walls.
+        </p>
         <LogoRow logos={academic} label="Academic &amp; Institutional Partners" />
         <div className="h-px w-full bg-zinc-800" />
         <div className="flex flex-col gap-6">

@@ -17,9 +17,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stepfault | Deterministic AI for High-Stakes Domains",
+  title: "Stepfault | MAPOS · Interim CTO & Deep-Tech R&D",
   description:
-    "MAPOS orchestrates multi-agent systems with provable guarantees. No hallucinations, no guesswork. Deterministic outcomes for compliance, legal, and risk-sensitive workflows.",
+    "Principal-led architecture and R&D for AI, bioinformatics, and compliance-heavy systems—deterministic MAPOS-style orchestration, reference trace on site; interim CTO and institutional engagements.",
 };
 
 export default function RootLayout({
