@@ -17,9 +17,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stepfault | MAPOS · Interim CTO & Deep-Tech R&D",
+  title: "Stepfault | Elite Engineering. Startup Speed.",
   description:
-    "Principal-led architecture and R&D for AI, bioinformatics, and compliance-heavy systems—deterministic MAPOS-style orchestration, reference trace on site; interim CTO and institutional engagements.",
+    "On-demand technical partner for 48-hour MVPs, fractional feature sprints, and production-grade AI infrastructure—ship faster than you can hire.",
 };
 
 export default function RootLayout({
