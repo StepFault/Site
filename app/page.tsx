@@ -26,10 +26,12 @@ export default function HomePage() {
     <>
       <Navbar />
 
-      <main className="flex flex-col items-center gap-16 px-4 pt-28 pb-16 sm:px-8 md:px-12">
+      <main className="flex flex-col items-center gap-16 px-4 pt-32 pb-16 sm:px-8 md:px-12">
 
         {/* ── 01 · HERO ──────────────────────────────────────────────────────── */}
-        <Hero />
+        <div className="w-full max-w-6xl">
+          <Hero />
+        </div>
 
         {/* ── 02 · EXECUTIVE OFFERINGS ─────────────────────────────────────────── */}
         <SectionDivider label="// offerings" />
