@@ -1,6 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import QuantumBackground from "@/components/ui/QuantumBackground";
 import Hero from "@/components/sections/Hero";
+import TrustedBy from "@/components/sections/TrustedBy";
 import Services from "@/components/sections/Services";
 import TrustSignals from "@/components/sections/TrustSignals";
 import Deployments from "@/components/sections/Deployments";
@@ -34,6 +35,7 @@ export default function HomePage() {
         <div className="w-full max-w-6xl">
           <Hero />
         </div>
+        <TrustedBy />
 
         {/* ── 02 · EXECUTIVE OFFERINGS ─────────────────────────────────────────── */}
         <SectionDivider label="// offerings" />

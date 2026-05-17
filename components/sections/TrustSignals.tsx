@@ -1,18 +1,57 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, type Variants } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { BrandIcon, type BrandId } from "@/components/ui/BrandIcon";
 import portfolioData from "@/lib/data/portfolio.json";
 
 type PartnerLogo = { id: string; name: string; logo: string; url?: string };
 
-type InfrastructureByCategory = {
-  application: PartnerLogo[];
-  ai: PartnerLogo[];
-  quantum: PartnerLogo[];
+type InfraItem = { brand: BrandId; name: string };
+
+type InfraCategory = {
+  id: string;
+  title: string;
+  items: InfraItem[];
+  badge?: string;
 };
+
+const GLASS_CARD =
+  "rounded-xl border border-white/10 bg-slate-900/40 p-6 shadow-2xl backdrop-blur-md " +
+  "transition-all duration-300 hover:border-white/20 hover:bg-slate-800/50";
+
+const INFRA_CATEGORIES: InfraCategory[] = [
+  {
+    id: "application",
+    title: "Application",
+    items: [
+      { brand: "nextjs", name: "Next.js" },
+      { brand: "tailwind", name: "Tailwind CSS" },
+      { brand: "vercel", name: "Vercel" },
+      { brand: "supabase", name: "Supabase" },
+    ],
+  },
+  {
+    id: "ai",
+    title: "AI & ML",
+    items: [
+      { brand: "pytorch", name: "PyTorch" },
+      { brand: "aws", name: "AWS" },
+      { brand: "azure", name: "Microsoft Azure" },
+      { brand: "openai", name: "OpenAI" },
+    ],
+    badge: "Powered by Dedicated Cloud Compute",
+  },
+  {
+    id: "quantum",
+    title: "Quantum / Compute",
+    items: [
+      { brand: "ibm", name: "IBM" },
+      { brand: "python", name: "Python" },
+      { brand: "cpp", name: "C++" },
+    ],
+  },
+];
 
 const FADE_UP: Variants = {
   hidden: { opacity: 0, y: 12 },
@@ -22,8 +61,6 @@ const FADE_UP: Variants = {
     transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" as const },
   }),
 };
-
-const SCROLL_STEP_PX = 200;
 
 function LogoRow({
   logos,
@@ -62,7 +99,7 @@ function LogoRow({
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:ring-offset-2 focus:ring-offset-zinc-900 rounded"
+                  className="block rounded focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:ring-offset-2 focus:ring-offset-zinc-900"
                   aria-label={`${partner.name} (opens in new window)`}
                 >
                   {content}
@@ -78,176 +115,86 @@ function LogoRow({
   );
 }
 
-function InfrastructureScrollRow({
-  logos,
-  label,
-}: {
-  logos: PartnerLogo[];
-  label: string;
-}) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-
-  const updateScrollState = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 0);
-    setCanScrollRight(
-      el.scrollLeft < el.scrollWidth - el.clientWidth - 1
-    );
-  }, []);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    updateScrollState();
-    const ro = new ResizeObserver(updateScrollState);
-    ro.observe(el);
-    el.addEventListener("scroll", updateScrollState);
-    return () => {
-      ro.disconnect();
-      el.removeEventListener("scroll", updateScrollState);
-    };
-  }, [logos.length, updateScrollState]);
-
-  const scroll = (direction: "left" | "right") => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.scrollBy({
-      left: direction === "left" ? -SCROLL_STEP_PX : SCROLL_STEP_PX,
-      behavior: "smooth",
-    });
-  };
-
-  const buttonBase =
-    "flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md border border-white/10 bg-slate-900/40 font-mono text-zinc-500 shadow-lg backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-slate-800/50 hover:text-zinc-200 disabled:pointer-events-none disabled:opacity-40";
-
+function InfraTechItem({ brand, name }: InfraItem) {
   return (
-    <div className="flex flex-col gap-3">
-      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-slate-300">
-        {label}
-      </p>
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          aria-label={`Scroll ${label} left`}
-          className={buttonBase}
-          disabled={!canScrollLeft}
-          onClick={() => scroll("left")}
-        >
-          <ChevronLeft className="h-4 w-4" strokeWidth={2} aria-hidden />
-        </button>
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          role="region"
-          aria-label={`${label} technologies`}
-        >
-          {logos.map((partner, i) => {
-            const content = (
-              <Image
-                src={partner.logo}
-                alt={partner.name}
-                width={120}
-                height={36}
-                className="h-9 w-auto grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            );
-            return (
-              <motion.div
-                key={partner.id}
-                custom={i}
-                variants={FADE_UP}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-40px" }}
-                className="flex-shrink-0"
-              >
-                {partner.url ? (
-                  <a
-                    href={partner.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:ring-offset-2 focus:ring-offset-zinc-900 rounded"
-                    aria-label={`${partner.name} (opens in new window)`}
-                  >
-                    {content}
-                  </a>
-                ) : (
-                  content
-                )}
-              </motion.div>
-            );
-          })}
-        </div>
-        <button
-          type="button"
-          aria-label={`Scroll ${label} right`}
-          className={buttonBase}
-          disabled={!canScrollRight}
-          onClick={() => scroll("right")}
-        >
-          <ChevronRight className="h-4 w-4" strokeWidth={2} aria-hidden />
-        </button>
+    <li className="group flex items-center gap-3 rounded-md border border-transparent px-2 py-2 transition-all duration-300 hover:border-white/10 hover:bg-white/5">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center text-slate-400 transition-colors duration-300 group-hover:text-white">
+        <BrandIcon brand={brand} className="h-6 w-6 fill-current" />
       </div>
-    </div>
+      <span className="font-mono text-xs tracking-wide text-slate-300 transition-colors duration-300 group-hover:text-white">
+        {name}
+      </span>
+    </li>
+  );
+}
+
+function InfrastructureCategory({
+  category,
+  index,
+}: {
+  category: InfraCategory;
+  index: number;
+}) {
+  return (
+    <motion.article
+      custom={index}
+      variants={FADE_UP}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-40px" }}
+      className={GLASS_CARD}
+    >
+      <h3 className="font-mono text-[10px] uppercase tracking-[0.3em] text-slate-300">
+        {category.title}
+      </h3>
+      <ul className="mt-4 grid grid-cols-1 gap-1 sm:grid-cols-2">
+        {category.items.map((item) => (
+          <InfraTechItem key={item.brand} {...item} />
+        ))}
+      </ul>
+      {category.badge && (
+        <p className="mt-4 inline-flex rounded-md border border-emerald-400/20 bg-emerald-400/5 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-emerald-400/90">
+          {category.badge}
+        </p>
+      )}
+    </motion.article>
   );
 }
 
 export default function TrustSignals() {
   const partners = portfolioData.partners as {
     academic: PartnerLogo[];
-    infrastructure: PartnerLogo[] | InfrastructureByCategory;
   };
-  const { academic, infrastructure } = partners;
-  const infraByCategory =
-    infrastructure &&
-    typeof infrastructure === "object" &&
-    "application" in infrastructure
-      ? (infrastructure as InfrastructureByCategory)
-      : null;
+  const { academic } = partners;
 
   return (
-    <section
-      id="trust"
-      className="w-full max-w-3xl scroll-mt-20"
-    >
+    <section id="trust" className="relative z-0 w-full max-w-5xl scroll-mt-20">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col gap-8 rounded-md border border-white/10 bg-slate-900/40 px-6 py-8 shadow-2xl backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-slate-800/50"
+        className={`flex flex-col gap-8 ${GLASS_CARD}`}
       >
         <p className="max-w-xl text-left font-mono text-xs leading-relaxed text-slate-300">
           Research and infrastructure we ship against—relationships that inform
           architecture, not logo walls.
         </p>
         <LogoRow logos={academic} label="Academic &amp; Institutional Partners" />
-        <div className="h-px w-full bg-zinc-800" />
-        <div className="flex flex-col gap-6">
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-600">
+        <div className="h-px w-full bg-white/10" />
+        <div className="flex flex-col gap-4">
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-slate-300">
             Core Infrastructure
           </p>
-          {infraByCategory ? (
-            <div className="flex flex-col gap-6 overflow-hidden">
-              <InfrastructureScrollRow
-                logos={infraByCategory.application}
-                label="Application"
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+            {INFRA_CATEGORIES.map((category, i) => (
+              <InfrastructureCategory
+                key={category.id}
+                category={category}
+                index={i}
               />
-              <InfrastructureScrollRow
-                logos={infraByCategory.ai}
-                label="AI &amp; ML"
-              />
-              <InfrastructureScrollRow
-                logos={infraByCategory.quantum}
-                label="Quantum"
-              />
-            </div>
-          ) : Array.isArray(infrastructure) ? (
-            <LogoRow logos={infrastructure} label="" />
-          ) : null}
+            ))}
+          </div>
         </div>
       </motion.div>
     </section>
