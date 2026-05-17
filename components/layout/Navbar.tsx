@@ -21,7 +21,7 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="fixed inset-x-0 top-0 z-50 border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-md"
+      className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-md"
     >
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 md:px-8">
         {/* Wordmark */}
@@ -48,7 +48,7 @@ export default function Navbar() {
           <li>
             <a
               href={contactNav.href}
-              className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-900 px-4 py-1.5 font-mono text-xs tracking-widest text-zinc-200 transition-colors hover:border-emerald-500/50 hover:bg-zinc-800 hover:text-emerald-400"
+              className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-slate-900/40 px-4 py-1.5 font-mono text-xs tracking-widest text-zinc-200 shadow-lg backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-slate-800/50 hover:text-emerald-400"
             >
               <ContactIcon
                 className="h-3.5 w-3.5 text-zinc-500"

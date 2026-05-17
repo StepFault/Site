@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-black text-zinc-200 antialiased">
+      <main className="min-h-screen bg-slate-950 text-zinc-200 antialiased">
         <div className="mx-auto max-w-2xl px-6 pt-28 pb-24">
           <Link
             href="/"

@@ -1,4 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
+import QuantumBackground from "@/components/ui/QuantumBackground";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import TrustSignals from "@/components/sections/TrustSignals";
@@ -24,9 +25,10 @@ function SectionDivider({ label }: { label: string }) {
 export default function HomePage() {
   return (
     <>
+      <QuantumBackground />
       <Navbar />
 
-      <main className="flex flex-col items-center gap-16 px-4 pt-32 pb-16 sm:px-8 md:px-12">
+      <main className="relative z-0 flex flex-col items-center gap-16 px-4 pt-32 pb-16 sm:px-8 md:px-12">
 
         {/* ── 01 · HERO ──────────────────────────────────────────────────────── */}
         <div className="w-full max-w-6xl">

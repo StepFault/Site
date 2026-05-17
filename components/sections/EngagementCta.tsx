@@ -34,7 +34,7 @@ export default function EngagementCta({
           href={FRACTIONAL_CTA_HREF}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex flex-1 items-center justify-center rounded-md border border-zinc-600 bg-transparent px-7 py-3 font-mono text-sm text-slate-50 transition-colors hover:border-zinc-400 hover:bg-zinc-900/80 sm:flex-none"
+          className="inline-flex flex-1 items-center justify-center rounded-md border border-white/10 bg-slate-900/30 px-7 py-3 font-mono text-sm text-slate-50 shadow-lg backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-slate-800/50 sm:flex-none"
         >
           Explore Fractional Scoping
         </a>

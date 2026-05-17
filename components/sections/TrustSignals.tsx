@@ -121,7 +121,7 @@ function InfrastructureScrollRow({
   };
 
   const buttonBase =
-    "flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900/80 font-mono text-zinc-500 transition-colors hover:border-zinc-600 hover:bg-zinc-800 hover:text-zinc-200 disabled:pointer-events-none disabled:opacity-40";
+    "flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md border border-white/10 bg-slate-900/40 font-mono text-zinc-500 shadow-lg backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-slate-800/50 hover:text-zinc-200 disabled:pointer-events-none disabled:opacity-40";
 
   return (
     <div className="flex flex-col gap-3">
@@ -218,7 +218,7 @@ export default function TrustSignals() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col gap-8 rounded-md border border-zinc-800 bg-zinc-900/30 px-6 py-8"
+        className="flex flex-col gap-8 rounded-md border border-white/10 bg-slate-900/40 px-6 py-8 shadow-2xl backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-slate-800/50"
       >
         <p className="max-w-xl text-left font-mono text-xs leading-relaxed text-slate-300">
           Research and infrastructure we ship against—relationships that inform

@@ -56,9 +56,9 @@ const ENGAGEMENT_STEPS = [
 ] as const;
 
 const tierCardClass =
-  "group relative flex h-full flex-col overflow-hidden rounded-md border border-zinc-800 " +
-  "bg-zinc-950/70 px-7 py-8 transition-[border-color,background-color,box-shadow] duration-300 " +
-  "hover:border-zinc-700 hover:bg-zinc-900/45 hover:shadow-[0_0_0_1px_rgba(39,39,42,0.4)] " +
+  "group relative flex h-full flex-col overflow-hidden rounded-md border border-white/10 " +
+  "bg-slate-900/40 px-7 py-8 shadow-2xl backdrop-blur-md transition-all duration-300 " +
+  "hover:border-white/20 hover:bg-slate-800/50 hover:shadow-[0_0_24px_rgba(59,130,246,0.08)] " +
   "md:px-8 md:py-9";
 
 function OfferingBullets({ items }: { items: readonly string[] }) {
@@ -82,7 +82,7 @@ function OfferingBullets({ items }: { items: readonly string[] }) {
 
 function EngagementModel() {
   return (
-    <div className="rounded-md border border-zinc-800 bg-zinc-900/25 px-6 py-7 md:px-10 md:py-8">
+    <div className="rounded-md border border-white/10 bg-slate-900/40 px-6 py-7 shadow-2xl backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-slate-800/50 md:px-10 md:py-8">
       <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-zinc-600">
         Engagement model
       </p>

@@ -106,9 +106,9 @@ export default function MaposSimulator({
   return (
     <div className="w-full max-w-3xl">
       {/* Terminal window chrome */}
-      <div className="rounded-md border border-zinc-800 bg-zinc-950">
+      <div className="rounded-md border border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-slate-800/50">
         {/* Title bar */}
-        <div className="flex items-center gap-2 border-b border-zinc-800 px-4 py-3">
+        <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
           <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
           <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
           <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
@@ -161,7 +161,7 @@ export default function MaposSimulator({
         </div>
 
         {/* Control bar */}
-        <div className="flex items-center justify-between border-t border-zinc-800 px-4 py-3">
+        <div className="flex items-center justify-between border-t border-white/10 px-4 py-3">
           <div className="flex items-center gap-2">
             <span
               className={`h-2 w-2 rounded-full ${
@@ -186,7 +186,7 @@ export default function MaposSimulator({
               type="button"
               onClick={resetSimulation}
               disabled={!isRunning && lines.length === 0}
-              className="inline-flex items-center gap-1.5 rounded border border-zinc-800 bg-zinc-900 px-3 py-1.5 font-mono text-xs text-zinc-400 transition-colors hover:border-zinc-700 hover:text-zinc-200 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-1.5 rounded border border-white/10 bg-slate-900/40 px-3 py-1.5 font-mono text-xs text-zinc-400 shadow-lg backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-slate-800/50 hover:text-zinc-200 disabled:cursor-not-allowed disabled:opacity-40"
             >
               <RotateCcw className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
               Reset

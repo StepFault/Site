@@ -31,7 +31,7 @@ export default function MaposSectorPreview() {
             className={`rounded border px-3 py-1.5 font-mono text-xs transition-colors ${
               sector === s
                 ? "border-emerald-500/50 bg-emerald-500/10 text-emerald-400"
-                : "border-zinc-800 bg-zinc-900 text-zinc-500 hover:border-zinc-700 hover:text-zinc-300"
+                : "border-white/10 bg-slate-900/40 text-zinc-500 shadow-lg backdrop-blur-md hover:border-white/20 hover:bg-slate-800/50 hover:text-zinc-300"
             }`}
           >
             {MAPOS_SECTOR_LABELS[s]}

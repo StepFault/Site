@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-black text-zinc-200 antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-transparent text-zinc-200 antialiased`}
         suppressHydrationWarning
       >
         {children}

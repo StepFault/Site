@@ -38,9 +38,9 @@ const STATUS_LABELS: Record<string, string> = {
 };
 
 const CARD_SHELL =
-  "group relative flex flex-col gap-5 overflow-hidden rounded-md border p-6 " +
-  "border-zinc-800 bg-zinc-900/50 transition-all duration-300 " +
-  "hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(52,211,153,0.1)]";
+  "group relative flex flex-col gap-5 overflow-hidden rounded-md border border-white/10 p-6 " +
+  "bg-slate-900/40 shadow-2xl backdrop-blur-md transition-all duration-300 " +
+  "hover:border-white/20 hover:bg-slate-800/50 hover:shadow-[0_0_20px_rgba(52,211,153,0.12)]";
 
 function CaseStudyMetrics({ metrics }: { metrics: Metric[] }) {
   return (
@@ -80,7 +80,7 @@ function CaseStudyVisual({
   }
 
   return (
-    <div className="relative flex h-36 w-full items-center justify-center overflow-hidden rounded-sm border border-zinc-800 bg-zinc-950">
+    <div className="relative flex h-36 w-full items-center justify-center overflow-hidden rounded-sm border border-white/10 bg-slate-900/30 backdrop-blur-sm">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(52,211,153,0.06)_0%,transparent_70%)]" />
       <span className="font-mono text-xs tracking-[0.3em] text-zinc-700">
         CASE STUDY
