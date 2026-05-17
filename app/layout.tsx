@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Stepfault | Elite Engineering. Startup Speed.",
   description:
-    "On-demand technical partner for 48-hour MVPs, fractional feature sprints, and production-grade AI infrastructure—ship faster than you can hire.",
+    "On-demand technical partner for 48-hour MVPs, fractional sprints, and production AI. Ship faster than you can hire.",
 };
 
 export default function RootLayout({

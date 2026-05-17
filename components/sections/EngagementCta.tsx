@@ -19,7 +19,7 @@ export default function EngagementCta({
   return (
     <div className={["w-full", className].filter(Boolean).join(" ")}>
       <p className={`mb-6 text-lg leading-relaxed text-slate-300 ${textAlign}`}>
-        Ready to move fast? Secure your spot for this week&apos;s sprint.
+        Sprint slots are open this week. Book a call or scope fractional work.
       </p>
       <div className={`flex flex-wrap items-center gap-4 ${buttonsJustify}`}>
         <a

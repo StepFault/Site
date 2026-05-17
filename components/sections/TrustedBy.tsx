@@ -16,7 +16,7 @@ const ACADEMIC_PARTNERS: Partner[] = [
   { id: "ttcu", label: "TTCU" },
   { id: "stanford", label: "Stanford University" },
   { id: "mit", label: "MIT" },
-  { id: "research-partner", label: "Research Partner — swap logo" },
+  { id: "research-partner", label: "Research Partner (swap logo)" },
 ];
 
 function PartnerLogoRow({ partners }: { partners: Partner[] }) {

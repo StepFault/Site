@@ -53,7 +53,7 @@ const INFRA_CATEGORIES: InfraCategory[] = [
       { brand: "langchain", name: "LangChain" },
       { brand: "openai", name: "OpenAI" },
     ],
-    badge: "Powered by Dedicated Cloud Compute",
+    badge: "Dedicated Azure/AWS compute available",
   },
   {
     id: "cloud",
@@ -156,9 +156,8 @@ export default function TrustSignals() {
             Core Infrastructure
           </p>
           <p className="max-w-2xl font-mono text-xs leading-relaxed text-slate-300">
-            Enterprise-grade stack across product surface, data plane, ML
-            pipelines, and cloud operations—composed for speed without sacrificing
-            rigor.
+            Stack we run in production. Frontend, data, ML, and cloud. Built to
+            ship fast and stay maintainable.
           </p>
         </div>
 

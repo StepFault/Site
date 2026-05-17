@@ -50,7 +50,7 @@ export default function HomePage() {
         >
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-mono text-xs uppercase tracking-widest text-slate-300">
-              MAPOS · Deterministic orchestration (showroom trace)
+              MAPOS · deterministic routing (demo trace)
             </h2>
             <span className="font-mono text-xs text-zinc-700">01 / 03</span>
           </div>
@@ -59,7 +59,7 @@ export default function HomePage() {
           <div className="mt-10 flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <h3 className="font-mono text-xs uppercase tracking-widest text-slate-300">
-                One vertical · same playback engine
+                One vertical, same demo engine
               </h3>
               <span className="font-mono text-xs text-zinc-700">02 / 03</span>
             </div>

@@ -4,9 +4,9 @@
       "id": "cross-border-fintech-compliance",
       "slug": "cross-border-fintech-compliance",
       "name": "Cross-Border Fintech & Legal Compliance",
-      "domain": "Executive case study",
-      "scale": "A regulated institution needed one operating model for cross-border product and treasury: national accounting (SYSCOHADA) and international reporting (IFRS) had to stay reconcilable while boards, regulators, and investors asked for the same numbers in near real time.",
-      "solution": "Rebuilt the core stack on Next.js and PostgreSQL with strict SYSCOHADA enforcement, IFRS bridging, and human-in-the-loop agents—policy, bookings, and disclosures stay aligned behind deterministic review gates before anything external ships.",
+      "domain": "Case study",
+      "scale": "A regulated bank needed one operating model for cross-border product and treasury. SYSCOHADA and IFRS had to reconcile. Boards, regulators, and investors wanted the same numbers, updated often.",
+      "solution": "Rebuilt on Next.js and PostgreSQL with SYSCOHADA enforcement, IFRS bridging, and human-in-the-loop agents. Policy, bookings, and disclosures go through review gates before anything ships externally.",
       "status": "case-study",
       "image": "/projects/realverdict.svg",
       "metrics": [
@@ -19,10 +19,10 @@
     {
       "id": "institutional-social-impact",
       "slug": "institutional-social-impact",
-      "name": "Institutional Social Impact at Scale",
-      "domain": "Executive case study",
-      "scale": "Programs across housing stability, clinical access, and household financial health—field operations, data agreements, and funder governance had to interoperate without eroding outcomes for vulnerable populations.",
-      "solution": "Led Google.org-funded work wiring housing, clinical, and financial infrastructure: clear data contracts, partner alignment, and measurement so capital produced durable access instead of one-off pilots.",
+      "name": "Social Impact Platform Work",
+      "domain": "Case study",
+      "scale": "Housing, clinical access, and household finance programs had to share data and governance without breaking outcomes for vulnerable populations.",
+      "solution": "Google.org-funded build across housing, clinical, and finance systems. Clear data contracts, aligned partners, and metrics so funding bought lasting access, not one-off pilots.",
       "status": "case-study",
       "image": "/projects/municipal.svg",
       "metrics": [

@@ -28,11 +28,10 @@ export default function ContactPage() {
           </div>
 
           <h1 className="text-3xl font-semibold tracking-tight text-white">
-            Move fast with elite engineering
+            Move fast with senior engineering
           </h1>
           <p className="mt-3 text-lg leading-relaxed text-slate-300">
-            Pick a path below—no intake forms, no queue friction. We respond when
-            there is a mutual fit.
+            Pick a path below. No intake forms. We reply when it is a fit.
           </p>
 
           <div className="mt-10">

@@ -65,9 +65,8 @@ export default function Hero() {
         variants={fadeUp}
         className="mx-auto max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl lg:mx-0"
       >
-        Elite Engineering. Startup Speed. We scaffold production-grade MVPs,
-        process massive AI datasets, and unblock engineering teams in days, not
-        months.
+        We ship production MVPs, run heavy AI data pipelines, and unblock your
+        eng team in days. Not quarters.
       </motion.p>
 
       <motion.div variants={fadeUp} className="w-full max-w-2xl lg:max-w-none">

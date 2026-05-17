@@ -22,7 +22,7 @@ const OFFERING_TIERS: readonly OfferingTier[] = [
     bullets: [
       "Full-Stack Scaffolding",
       "Stripe/Auth Integration",
-      "AI Feature Injection",
+      "AI features in the MVP",
     ],
   },
   {
@@ -39,7 +39,7 @@ const OFFERING_TIERS: readonly OfferingTier[] = [
   {
     id: "tier-3",
     label: "Tier 03",
-    title: "Fractional Elite Engineering",
+    title: "Fractional Senior Engineering",
     icon: Scale,
     bullets: [
       "On-Demand Feature Sprints",
@@ -133,8 +133,8 @@ export default function Services() {
           {"// Executive offerings"}
         </h2>
         <p className="max-w-2xl text-2xl font-semibold tracking-tight text-white md:text-[1.65rem] md:leading-snug">
-          High-stakes mandates for teams that cannot separate code, proof, and
-          regulatory truth.
+          For teams where code, proof, and compliance have to line up. No slide
+          decks. Just delivery.
         </p>
       </motion.div>
 

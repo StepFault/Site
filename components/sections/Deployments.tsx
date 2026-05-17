@@ -176,7 +176,7 @@ export default function Deployments() {
             {"// TECHNICAL TRACK RECORD"}
           </h2>
           <p className="text-2xl font-semibold tracking-tight text-white">
-            Selected program evidence
+            Recent shipped builds
           </p>
         </div>
         <span className="shrink-0 font-mono text-xs text-zinc-700">
