@@ -6,15 +6,31 @@ export type BrandId =
   | "anthropic"
   | "tulsa-remote"
   | "tu"
+  | "ttcu"
+  | "stanford"
+  | "mit"
+  | "research-partner"
   | "nextjs"
+  | "react"
   | "tailwind"
+  | "framer"
   | "vercel"
+  | "nodejs"
+  | "python"
+  | "postgresql"
   | "supabase"
+  | "redis"
   | "pytorch"
+  | "tensorflow"
+  | "huggingface"
+  | "langchain"
   | "aws"
   | "azure"
+  | "docker"
+  | "github-actions"
+  | "qiskit"
+  | "ibm-quantum"
   | "ibm"
-  | "python"
   | "cpp";
 
 export function BrandIcon({
@@ -189,6 +205,136 @@ export function BrandIcon({
         <span className="font-mono text-sm font-bold" aria-hidden>
           C++
         </span>
+      );
+    case "ttcu":
+      return (
+        <span className="font-mono text-sm font-bold tracking-widest" aria-hidden>
+          TTCU
+        </span>
+      );
+    case "stanford":
+      return (
+        <span className="font-mono text-xs font-semibold tracking-wide" aria-hidden>
+          Stanford
+        </span>
+      );
+    case "mit":
+      return (
+        <span className="font-mono text-sm font-bold tracking-wider" aria-hidden>
+          MIT
+        </span>
+      );
+    case "research-partner":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path
+            fill="currentColor"
+            d="M12 3l2.2 6.8H21l-5.5 4 2.1 6.8L12 16.6 6.3 20.6l2.1-6.8-5.5-4h6.8L12 3z"
+            opacity="0.35"
+          />
+          <circle cx="12" cy="12" r="3" fill="currentColor" />
+        </svg>
+      );
+    case "react":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <circle cx="12" cy="12" r="2.2" fill="currentColor" />
+          <ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="currentColor" strokeWidth="1.2" />
+          <ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="currentColor" strokeWidth="1.2" transform="rotate(60 12 12)" />
+          <ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="currentColor" strokeWidth="1.2" transform="rotate(120 12 12)" />
+        </svg>
+      );
+    case "framer":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path fill="currentColor" d="M4 4h7v7H4V4zm0 9h7v7H4v-7zm9-9h7v7h-7V4zm0 9h7v7h-7v-7z" opacity="0.9" />
+        </svg>
+      );
+    case "nodejs":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path
+            fill="currentColor"
+            d="M12 2C8.5 2 6 3.5 6 6.5v11C6 20.5 8.5 22 12 22s6-1.5 6-4.5v-11C18 3.5 15.5 2 12 2zm0 2c2.2 0 3.5.8 3.5 2.5S14.2 9 12 9 8.5 8.2 8.5 6.5 9.8 4 12 4zm-1 14.5v-3h2v3c0 .8-.9 1.5-2 1.5s-2-.7-2-1.5z"
+          />
+        </svg>
+      );
+    case "postgresql":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path
+            fill="currentColor"
+            d="M12 2c-4 0-7 2-7 5v10c0 2 2 3.5 5 4l-1 3 3-2 3 2-1-3c3-.5 5-2 5-4V7c0-3-3-5-7-5zm0 2c3 0 5 1.5 5 3s-2 3-5 3-5-1.5-5-3 2-3 5-3z"
+          />
+        </svg>
+      );
+    case "redis":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path fill="currentColor" d="M12 2 4 6v12l8 4 8-4V6l-8-4zm0 2.2 5.5 2.8L12 9.8 6.5 7 12 4.2zM6 8.5l6 3v7.2l-6-3V8.5zm12 0v7.2l-6 3v-7.2l6-3z" />
+        </svg>
+      );
+    case "tensorflow":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path fill="currentColor" d="M12 2 4 7v10l8 5 8-5V7l-8-5zm0 3 5 3.1v5.8L12 17 7 13.9V8.1L12 5z" />
+          <path fill="currentColor" d="M12 8v8l6-3.5V11.5L12 8z" opacity="0.6" />
+        </svg>
+      );
+    case "huggingface":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path
+            fill="currentColor"
+            d="M12 3c-3 0-5 2-5 4.5 0 1.2.5 2.3 1.4 3.1-.9.8-1.4 1.9-1.4 3.1 0 2.5 2 4.5 5 4.5s5-2 5-4.5c0-1.2-.5-2.3-1.4-3.1.9-.8 1.4-1.9 1.4-3.1C17 5 15 3 12 3zm-2.5 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+          />
+        </svg>
+      );
+    case "langchain":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            d="M8 12h8M12 8v8M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3"
+          />
+          <circle cx="12" cy="12" r="2.5" fill="currentColor" />
+        </svg>
+      );
+    case "docker":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path
+            fill="currentColor"
+            d="M4 14h1v2H4v-2zm2-2h1v4H6v-4zm2 0h1v4H8v-4zm2-2h1v6h-1v-6zm2 0h1v6h-1v-6zm2 2h1v4h-1v-4zm2 0h1v4h-1v-4zm2-2h1v6h-1v-6zM3 12h14.5c.8 0 1.5.7 1.5 1.5v.5c0 2.2-1.8 4-4 4H8c-2.8 0-5-2.2-5-5v-1z"
+          />
+        </svg>
+      );
+    case "github-actions":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path
+            fill="currentColor"
+            d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1 14.5v-9l6.5 4.5L11 16.5z"
+          />
+        </svg>
+      );
+    case "qiskit":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.4" />
+          <path fill="currentColor" d="M12 7v10M8 9.5l8 5M16 9.5l-8 5" stroke="currentColor" strokeWidth="1.2" />
+        </svg>
+      );
+    case "ibm-quantum":
+      return (
+        <svg className={className} viewBox="0 0 24 24" aria-hidden>
+          <path
+            fill="currentColor"
+            d="M2.8 8.4h2.8v1.4H2.8V8.4zm0 2.8h2.8v1.4H2.8v-1.4zm0 2.8h2.8V15H2.8v-1zm3.5-5.6h2.8v1.4H6.3V8.4zm0 2.8h2.8v1.4H6.3v-1.4zm0 2.8h2.8V15H6.3v-1zm3.5-5.6h2.8v1.4H9.8V8.4zm0 2.8h2.8v1.4H9.8v-1.4zm0 2.8h2.8V15H9.8v-1zm3.5-5.6h2.8v1.4h-2.8V8.4zm0 2.8h2.8v1.4h-2.8v-1.4zm0 2.8h2.8V15h-2.8v-1zm3.5-5.6h2.8v1.4H17v-1.4zm0 2.8h2.8v1.4H17v-1.4zm0 2.8h2.8V15H17v-1z"
+          />
+        </svg>
       );
     default:
       return null;
