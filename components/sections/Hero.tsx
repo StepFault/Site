@@ -1,10 +1,8 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { CircleDot, Rocket, Users } from "lucide-react";
-
-const MVP_CTA_HREF = "YOUR_STRIPE_OR_CALENDLY_LINK_1";
-const FRACTIONAL_CTA_HREF = "YOUR_CALENDLY_LINK_2";
+import { CircleDot } from "lucide-react";
+import EngagementCta from "@/components/sections/EngagementCta";
 
 const container: Variants = {
   hidden: {},
@@ -37,7 +35,7 @@ export default function Hero() {
 
       <motion.div
         variants={fadeUp}
-        className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-mono text-xs text-zinc-500 lg:justify-start"
+        className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-mono text-xs text-slate-300 lg:justify-start"
       >
         <CircleDot
           className="h-3.5 w-3.5 shrink-0 text-blue-400"
@@ -55,7 +53,7 @@ export default function Hero() {
 
       <motion.h1
         variants={fadeUp}
-        className="max-w-5xl text-balance text-6xl font-bold tracking-tight text-zinc-100 sm:text-7xl"
+        className="max-w-5xl text-balance text-6xl font-bold tracking-tight text-white sm:text-7xl"
       >
         <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-blue-500 bg-clip-text text-transparent">
           Elite
@@ -65,35 +63,15 @@ export default function Hero() {
 
       <motion.p
         variants={fadeUp}
-        className="mx-auto max-w-2xl text-base leading-relaxed text-zinc-500 sm:text-lg lg:mx-0"
+        className="mx-auto max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl lg:mx-0"
       >
         Elite Engineering. Startup Speed. We scaffold production-grade MVPs,
         process massive AI datasets, and unblock engineering teams in days, not
         months.
       </motion.p>
 
-      <motion.div
-        variants={fadeUp}
-        className="flex flex-wrap items-center justify-center gap-4 lg:justify-start"
-      >
-        <a
-          href={MVP_CTA_HREF}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-500 px-7 py-3 font-mono text-sm font-medium text-white shadow-[0_0_28px_rgba(59,130,246,0.35)] transition-[background-color,box-shadow] hover:bg-blue-400 hover:shadow-[0_0_36px_rgba(59,130,246,0.45)]"
-        >
-          <Rocket className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
-          Ship Your MVP
-        </a>
-        <a
-          href={FRACTIONAL_CTA_HREF}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-md border border-zinc-700 bg-transparent px-7 py-3 font-mono text-sm text-zinc-200 transition-colors hover:border-zinc-500 hover:bg-zinc-900/80"
-        >
-          <Users className="h-4 w-4 shrink-0 text-zinc-500" strokeWidth={2} aria-hidden />
-          Hire Us Fractionally
-        </a>
+      <motion.div variants={fadeUp} className="w-full max-w-2xl lg:max-w-none">
+        <EngagementCta align="start" />
       </motion.div>
     </motion.section>
   );

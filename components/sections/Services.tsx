@@ -67,7 +67,7 @@ function OfferingBullets({ items }: { items: readonly string[] }) {
       {items.map((text) => (
         <li
           key={text}
-          className="flex gap-3 text-left text-[13px] leading-relaxed tracking-wide text-zinc-500"
+          className="flex gap-3 text-left text-[13px] leading-relaxed tracking-wide text-slate-300"
         >
           <span
             className="mt-[0.45rem] h-1 w-1 shrink-0 rounded-full bg-emerald-400/90"
@@ -129,10 +129,10 @@ export default function Services() {
         transition={{ duration: 0.4, ease: "easeOut" }}
         className="mb-10 flex flex-col gap-3 md:mb-12"
       >
-        <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-zinc-500">
+        <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-slate-300">
           {"// Executive offerings"}
         </h2>
-        <p className="max-w-2xl text-2xl font-semibold tracking-tight text-zinc-200 md:text-[1.65rem] md:leading-snug">
+        <p className="max-w-2xl text-2xl font-semibold tracking-tight text-white md:text-[1.65rem] md:leading-snug">
           High-stakes mandates for teams that cannot separate code, proof, and
           regulatory truth.
         </p>
@@ -160,7 +160,7 @@ export default function Services() {
                   <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-600">
                     {tier.label}
                   </span>
-                  <h3 className="text-base font-semibold leading-snug tracking-tight text-zinc-200 md:text-[1.05rem]">
+                  <h3 className="text-base font-semibold leading-snug tracking-tight text-white md:text-[1.05rem]">
                     {tier.title}
                   </h3>
                 </div>

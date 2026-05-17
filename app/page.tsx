@@ -45,7 +45,7 @@ export default function HomePage() {
           className="w-full max-w-3xl scroll-mt-20"
         >
           <div className="mb-5 flex items-center justify-between">
-            <h2 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
+            <h2 className="font-mono text-xs uppercase tracking-widest text-slate-300">
               MAPOS · Deterministic orchestration (showroom trace)
             </h2>
             <span className="font-mono text-xs text-zinc-700">01 / 03</span>
@@ -54,7 +54,7 @@ export default function HomePage() {
 
           <div className="mt-10 flex flex-col gap-4">
             <div className="flex items-center justify-between">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
+              <h3 className="font-mono text-xs uppercase tracking-widest text-slate-300">
                 One vertical · same playback engine
               </h3>
               <span className="font-mono text-xs text-zinc-700">02 / 03</span>
@@ -71,16 +71,16 @@ export default function HomePage() {
         <SectionDivider label="// stack & research context" />
         <TrustSignals />
 
-        {/* ── 06 · ENGAGEMENT INTAKE ────────────────────────────────────────────── */}
-        <SectionDivider label="// intake" />
+        {/* ── 06 · ENGAGEMENT CTA ───────────────────────────────────────────────── */}
+        <SectionDivider label="// engage" />
 
         <section
           id="access"
           className="w-full max-w-3xl scroll-mt-20 pb-16"
         >
           <div className="mb-5 flex items-center justify-between">
-            <h2 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-              Privileged intake · principal review queue
+            <h2 className="font-mono text-xs uppercase tracking-widest text-slate-300">
+              Book this week&apos;s sprint
             </h2>
             <span className="font-mono text-xs text-zinc-700">03 / 03</span>
           </div>

@@ -129,7 +129,7 @@ function CaseStudyCard({
         <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-600">
           {study.domain}
         </p>
-        <h3 className="text-base font-semibold leading-snug text-zinc-200 md:text-[1.05rem]">
+        <h3 className="text-base font-semibold leading-snug text-white md:text-[1.05rem]">
           {study.name}
         </h3>
       </div>
@@ -139,13 +139,13 @@ function CaseStudyCard({
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-emerald-400/90">
             Scale
           </p>
-          <p className="text-sm leading-relaxed text-zinc-400">{study.scale}</p>
+          <p className="text-sm leading-relaxed text-slate-300">{study.scale}</p>
         </div>
         <div className="flex flex-col gap-2">
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-emerald-400/90">
             Solution
           </p>
-          <p className="text-sm leading-relaxed text-zinc-400">
+          <p className="text-sm leading-relaxed text-slate-300">
             {study.solution}
           </p>
         </div>
@@ -172,10 +172,10 @@ export default function Deployments() {
         className="mb-8 flex items-end justify-between gap-4"
       >
         <div className="flex flex-col gap-2">
-          <h2 className="font-mono text-xs uppercase tracking-widest text-zinc-500">
+          <h2 className="font-mono text-xs uppercase tracking-widest text-slate-300">
             {"// TECHNICAL TRACK RECORD"}
           </h2>
-          <p className="text-2xl font-semibold tracking-tight text-zinc-200">
+          <p className="text-2xl font-semibold tracking-tight text-white">
             Selected program evidence
           </p>
         </div>

@@ -125,7 +125,7 @@ function InfrastructureScrollRow({
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500">
+      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-slate-300">
         {label}
       </p>
       <div className="flex items-center gap-2">
@@ -220,7 +220,7 @@ export default function TrustSignals() {
         transition={{ duration: 0.5 }}
         className="flex flex-col gap-8 rounded-md border border-zinc-800 bg-zinc-900/30 px-6 py-8"
       >
-        <p className="max-w-xl text-left font-mono text-xs leading-relaxed text-zinc-500">
+        <p className="max-w-xl text-left font-mono text-xs leading-relaxed text-slate-300">
           Research and infrastructure we ship against—relationships that inform
           architecture, not logo walls.
         </p>

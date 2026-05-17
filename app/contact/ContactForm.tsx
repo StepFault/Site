@@ -1,7 +1,5 @@
-"use client";
-
-import EngagementIntakeForm from "@/components/forms/EngagementIntakeForm";
+import EngagementCta from "@/components/sections/EngagementCta";
 
 export default function ContactForm() {
-  return <EngagementIntakeForm variant="page" />;
+  return <EngagementCta />;
 }
