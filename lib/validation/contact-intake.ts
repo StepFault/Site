@@ -22,10 +22,9 @@ export const FUNDING_STAGE_OPTIONS: readonly {
 
 /** Highest-commitment options first (gatekeeper ordering). */
 export const ENGAGEMENT_BUDGET_VALUES = [
-  "fractional_cto_retainer",
-  "50k_plus",
-  "25k_50k",
-  "10k_25k",
+  "rapid_mvp",
+  "fractional_sprint",
+  "enterprise_setup",
 ] as const;
 
 export type EngagementBudgetValue = (typeof ENGAGEMENT_BUDGET_VALUES)[number];
@@ -34,32 +33,10 @@ export const ENGAGEMENT_BUDGET_OPTIONS: readonly {
   value: EngagementBudgetValue;
   label: string;
 }[] = [
-  { value: "fractional_cto_retainer", label: "Fractional CTO Retainer" },
-  { value: "50k_plus", label: "$50k+" },
-  { value: "25k_50k", label: "$25k–$50k" },
-  { value: "10k_25k", label: "$10k–$25k" },
+  { value: "rapid_mvp", label: "Rapid MVP ($1.5k - $5k)" },
+  { value: "fractional_sprint", label: "Fractional Sprint ($5k - $10k)" },
+  { value: "enterprise_setup", label: "Enterprise Setup ($10k+)" },
 ] as const;
-
-const FREE_EMAIL_DOMAINS = new Set([
-  "gmail.com",
-  "googlemail.com",
-  "yahoo.com",
-  "yahoo.co.uk",
-  "hotmail.com",
-  "outlook.com",
-  "live.com",
-  "icloud.com",
-  "me.com",
-  "proton.me",
-  "protonmail.com",
-  "aol.com",
-]);
-
-function isCorporateEmail(email: string): boolean {
-  const domain = email.split("@")[1]?.toLowerCase().trim();
-  if (!domain) return false;
-  return !FREE_EMAIL_DOMAINS.has(domain);
-}
 
 export const ContactIntakeSchema = z.object({
   executiveName: z
@@ -75,12 +52,8 @@ export const ContactIntakeSchema = z.object({
   corporateEmail: z
     .string()
     .trim()
-    .min(1, "Corporate email is required.")
-    .email("Enter a valid email address.")
-    .refine(isCorporateEmail, {
-      message:
-        "Use a corporate email domain (personal inboxes such as Gmail are not accepted for intake).",
-    }),
+    .min(1, "Email is required.")
+    .email("Enter a valid email address."),
   fundingStage: z.preprocess(
     (v) => (v === "" || v === undefined ? undefined : v),
     z.enum(FUNDING_STAGE_VALUES, {

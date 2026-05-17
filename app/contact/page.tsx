@@ -5,7 +5,7 @@ import ContactForm from "./ContactForm";
 export const metadata = {
   title: "Contact | Stepfault",
   description:
-    "Principal intake for funded and scoped engagements — corporate email required.",
+    "Discovery intake for rapid MVPs, fractional sprints, and scoped engineering engagements.",
 };
 
 export default function ContactPage() {

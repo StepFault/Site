@@ -67,9 +67,9 @@ export default function Hero() {
         variants={fadeUp}
         className="mx-auto max-w-2xl text-base leading-relaxed text-zinc-500 sm:text-lg lg:mx-0"
       >
-        Your on-demand technical partner. From zero-to-MVP in 48 hours to
-        fractional feature sprints, we ship production-grade code and AI
-        infrastructure faster than you can hire.
+        Elite Engineering. Startup Speed. We scaffold production-grade MVPs,
+        process massive AI datasets, and unblock engineering teams in days, not
+        months.
       </motion.p>
 
       <motion.div

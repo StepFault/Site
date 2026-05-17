@@ -34,7 +34,7 @@ const validIntakeBody = {
   fundingStage: "seed",
   immediateTechnicalHurdle:
     "We need deterministic orchestration with human-in-the-loop gates before production.",
-  engagementBudgetRange: "50k_plus",
+  engagementBudgetRange: "rapid_mvp",
 } as const;
 
 describe("POST /api/contact", () => {

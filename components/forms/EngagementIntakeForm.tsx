@@ -15,7 +15,7 @@ import {
 } from "@/lib/validation/contact-intake";
 
 const LOADING_PHASES = [
-  { key: "auth", label: "Verifying corporate email signal…" },
+  { key: "auth", label: "Validating intake payload…" },
   { key: "queue", label: "Sealing payload for principal queue…" },
 ] as const;
 
@@ -247,11 +247,11 @@ export default function EngagementIntakeForm({
       <div className="border-b border-zinc-800 px-5 py-4 sm:px-6 sm:py-5">
         <p className="font-mono text-sm text-zinc-500">
           <span className="text-emerald-400">$</span> stepfault intake
-          --gate=funded --require-corporate-email
+          --gate=discovery --open-intake
         </p>
         <p className="mt-2 font-mono text-xs leading-relaxed text-zinc-600">
-          Restricted channel. Corporate email only. Every field is validated before
-          the queue admits a submission.
+          Discovery channel. Every field is validated before the queue admits a
+          submission.
         </p>
       </div>
 
@@ -287,7 +287,7 @@ export default function EngagementIntakeForm({
             type="email"
             autoComplete="email"
             disabled={busy}
-            placeholder="you@institution.com"
+            placeholder="you@company.com"
             className={inputRow}
             {...register("corporateEmail")}
           />
@@ -404,7 +404,7 @@ export default function EngagementIntakeForm({
             ) : (
               <>
                 <Lock className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
-                Commit intake
+                Initialize Discovery Call
               </>
             )}
           </button>
